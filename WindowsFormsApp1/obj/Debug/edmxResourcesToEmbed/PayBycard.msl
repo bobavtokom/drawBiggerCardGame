@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EFDbPayByCardModel2StoreContainer" CdmEntityContainer="EFDbPayByCardEntities1">
+    <EntitySetMapping Name="PayByCards">
+      <EntityTypeMapping TypeName="EFDbPayByCardModel2.PayByCard">
+        <MappingFragment StoreEntitySet="PayByCard">
+          <ScalarProperty Name="PayBycardId" ColumnName="PayBycardId" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="TimeOfPayment" ColumnName="TimeOfPayment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
