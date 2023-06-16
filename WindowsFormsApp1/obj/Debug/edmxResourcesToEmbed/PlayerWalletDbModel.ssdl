@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PlayerWalletModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PlayerWallet.dbo.Player_wallet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Player_wallet">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="userName" Type="nchar" MaxLength="50" />
+    <Property Name="userBalance" Type="float" />
+    <Property Name="balanceChangeTime" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="PlayerWalletModelStoreContainer">
+    <EntitySet Name="Player_wallet" EntityType="Self.Player_wallet" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Player_wallet].[userId] AS [userId], 
+    [Player_wallet].[userName] AS [userName], 
+    [Player_wallet].[userBalance] AS [userBalance], 
+    [Player_wallet].[balanceChangeTime] AS [balanceChangeTime]
+    FROM [dbo].[Player_wallet] AS [Player_wallet]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
