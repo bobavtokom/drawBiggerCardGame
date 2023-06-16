@@ -232,10 +232,12 @@
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource2.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserNewForm.resx">
       <DependentUpon>UserNewForm.cs</DependentUpon>
@@ -321,7 +323,18 @@
       <DependentUpon>ModelUserNew.edmx</DependentUpon>
       <LastGenOutput>ModelUserNew.cs</LastGenOutput>
     </Content>
-    <Content Include="Resources\10_of_clubs - Copy.png" />
+    <None Include="Resources\6_of_clubs.png" />
+    <None Include="Resources\7_of_diamonds.png" />
+    <None Include="Resources\7_of_clubs.png" />
+    <None Include="Resources\6_of_spades.png" />
+    <None Include="Resources\6_of_hearts.png" />
+    <None Include="Resources\6_of_diamonds.png" />
+    <None Include="Resources\5_of_spades.png" />
+    <None Include="Resources\5_of_hearts.png" />
+    <None Include="Resources\5_of_diamonds.png" />
+    <None Include="Resources\5_of_clubs.png" />
+    <None Include="Resources\4_of_spades.png" />
+    <None Include="Resources\4_of_hearts.png" />
     <None Include="Resources\red_joker.png" />
     <None Include="Resources\queen_of_spades2.png" />
     <None Include="Resources\queen_of_spades.png" />
@@ -363,9 +376,6 @@
     <None Include="Resources\8_of_clubs.png" />
     <None Include="Resources\7_of_spades.png" />
     <None Include="Resources\7_of_hearts.png" />
-    <None Include="Resources\7_of_diamonds.png" />
-    <None Include="Resources\7_of_clubs.png" />
-    <None Include="Resources\6_of_spades.png" />
     <None Include="Resources\playing-cards-back-on-white-background-with-path-DFE2552.jpg" />
     <None Include="Resources\2_of_clubs.png" />
     <None Include="Resources\2_of_diamonds.png" />
@@ -377,20 +387,10 @@
     <None Include="Resources\3_of_spades.png" />
     <None Include="Resources\4_of_clubs.png" />
     <None Include="Resources\4_of_diamonds.png" />
-    <None Include="Resources\4_of_hearts.png" />
-    <None Include="Resources\4_of_spades.png" />
-    <None Include="Resources\5_of_clubs.png" />
-    <None Include="Resources\5_of_diamonds.png" />
-    <None Include="Resources\5_of_hearts.png" />
-    <None Include="Resources\5_of_spades.png" />
-    <None Include="Resources\6_of_clubs.png" />
-    <None Include="Resources\6_of_diamonds.png" />
-    <None Include="Resources\6_of_hearts.png" />
     <None Include="Resources\10_of_clubs.png" />
     <None Include="Resources\10_of_diamonds.png" />
     <None Include="Resources\10_of_hearts.png" />
     <None Include="Resources\10_of_spades.png" />
-    <Content Include="Resources\6_of_spades - Copy.png" />
     <None Include="Resources\playing-cards-back-on-white-background-with-path-DFE2551.jpg" />
     <None Include="Resources\playing-cards-back-on-white-background-with-path-DFE255.jpg" />
     <None Include="Resources\locator.png" />
@@ -409,6 +409,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -39,9 +39,19 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
+            if(deckOfCardsImages.Length > 0){
+                Random random = new Random();
+                    int randomIndex = random.Next(0, deckOfCardsImages.Length);
+                    string randomFilePath = deckOfCardsImages[randomIndex];
+                    string fileName = Path.GetFileName(randomFilePath);
             textBoxDrawYourCard.Text = yourCard.ToString();
             pictureBoxPlayersCard.Visible = true;
-            pictureBoxPlayersCard.Image = Resource1.ace_of_hearts;
+            pictureBoxPlayersCard.Image = Image.FromFile(randomFilePath);
+
+                } else {
+                    Console.WriteLine("No PNG files found in the directory.");
+                }
+            
         }
 
         private void textBoxDrawComputersCard_TextChanged(object sender, EventArgs e) {
