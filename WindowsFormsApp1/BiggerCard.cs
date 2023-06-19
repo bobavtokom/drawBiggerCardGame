@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 
 namespace WindowsFormsApp1 {
-    public partialclass BiggerCard : Form {
+    public partial class BiggerCard : Form {
         public int Bet => int.Parse(textBoxBet.Text); 
         public static int min = 1;
         public static int max = 14;
