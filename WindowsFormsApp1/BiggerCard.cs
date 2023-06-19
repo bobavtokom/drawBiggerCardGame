@@ -40,9 +40,19 @@ namespace WindowsFormsApp1 {
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
             textBoxDrawYourCard.Text = yourCard.ToString();
             pictureBoxPlayersCard.Visible = true;
-            pictureBoxPlayersCard.Image = Resource1.ace_of_hearts;
 
+            string fileName = $"{yourCard}_of_clubs.png";
+            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", fileName);
+
+            if (File.Exists(imagePath)) {
+                pictureBoxPlayersCard.Image = Image.FromFile(imagePath);
+            }else {
+                throw new Exception("image not found");
+            }
         }
+
+
+
 
         private void textBoxDrawComputersCard_TextChanged(object sender, EventArgs e) {
 
