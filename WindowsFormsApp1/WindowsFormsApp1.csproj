@@ -321,7 +321,6 @@
       <DependentUpon>ModelUserNew.edmx</DependentUpon>
       <LastGenOutput>ModelUserNew.cs</LastGenOutput>
     </Content>
-    <Content Include="Resources\10_of_clubs - Copy.png" />
     <None Include="Resources\red_joker.png" />
     <None Include="Resources\queen_of_spades2.png" />
     <None Include="Resources\queen_of_spades.png" />

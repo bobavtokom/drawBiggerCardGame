@@ -12,13 +12,17 @@ using System.IO;
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
         public int Bet => int.Parse(textBoxBet.Text); 
-        public static int min = 1;
+        public static int min = 10;
         public static int max = 14;
         public static Random deckOfCards = new Random();
         public static int yourCard = deckOfCards.Next(min, max);
         public static int compCard = deckOfCards.Next(min, max);
+        int card = deckOfCards.Next(min, max);
+        string cardName;
+        private void GetCard(int card) {
+            
 
-        
+        }
         public BiggerCard(string tbUsername,string userBalance ) {
             InitializeComponent();
            textBoxBigCardUsername.Text = tbUsername;
@@ -38,18 +42,39 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
-            textBoxDrawYourCard.Text = yourCard.ToString();
             pictureBoxPlayersCard.Visible = true;
 
-            string fileName = $"{yourCard}_of_clubs.png";
-            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", fileName);
+            string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
+            string cardName;
+            switch (yourCard) {
+                case 11:
+                case 1:
+                    cardName = "ace";
+                    break;
+                case 12:
+                    cardName = "jack";
+                    break;
+                case 13:
+                    cardName = "queen";
+                    break;
+                case 14:
+                    cardName = "king";
+                    break;
+                default:
+                    cardName = yourCard.ToString();
+                    break;
+            }
 
-            if (File.Exists(imagePath)) {
+            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
+
+            if (matchingFiles.Length > 0) {
+                string imagePath = matchingFiles[0];
                 pictureBoxPlayersCard.Image = Image.FromFile(imagePath);
-            }else {
-                throw new Exception("image not found");
+            } else {
+                throw new Exception("Image not found");
             }
         }
+
 
 
 
@@ -59,10 +84,37 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawComputerCard_Click(object sender, EventArgs e) {
-            
-            textBoxDrawComputersCard.Text = compCard.ToString();
-            pictureBoxComputersCard.Visible = true;
-            pictureBoxComputersCard.Image = Resource1.jack_of_diamonds;
+            pictureBoxPlayersCard.Visible = true;
+
+            string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
+            string cardName;
+            switch (compCard) {
+                case 11:
+                case 1:
+                    cardName = "ace";
+                    break;
+                case 12:
+                    cardName = "jack";
+                    break;
+                case 13:
+                    cardName = "queen";
+                    break;
+                case 14:
+                    cardName = "king";
+                    break;
+                default:
+                    cardName = compCard.ToString();
+                    break;
+            }
+
+            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
+
+            if (matchingFiles.Length > 0) {
+                string imagePath = matchingFiles[0];
+                pictureBoxComputersCard.Image = Image.FromFile(imagePath);
+            } else {
+                throw new Exception("Image not found");
+            }
             if (compCard > yourCard) { textBoxPlayerStatus.Text = "You lose";
             } else if (compCard < yourCard) {
                 textBoxPlayerStatus.Text = "You win";
