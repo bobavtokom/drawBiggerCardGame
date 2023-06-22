@@ -42,7 +42,7 @@
             this.mainMenuTextBox.Location = new System.Drawing.Point(144, 161);
             this.mainMenuTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.mainMenuTextBox.Name = "mainMenuTextBox";
-            this.mainMenuTextBox.Size = new System.Drawing.Size(530, 297);
+            this.mainMenuTextBox.Size = new System.Drawing.Size(707, 375);
             this.mainMenuTextBox.TabIndex = 1;
             this.mainMenuTextBox.Text = "";
             // 
@@ -107,7 +107,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(800, 682);
+            this.ClientSize = new System.Drawing.Size(977, 760);
             this.Controls.Add(this.buttonMiddle);
             this.Controls.Add(this.buttonNo);
             this.Controls.Add(this.buttonYes);

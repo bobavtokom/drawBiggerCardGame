@@ -12,15 +12,35 @@ using System.IO;
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
         public int Bet => int.Parse(textBoxBet.Text); 
-        public static int min = 10;
+        public static int min = 1;
         public static int max = 14;
         public static Random deckOfCards = new Random();
         public static int yourCard = deckOfCards.Next(min, max);
         public static int compCard = deckOfCards.Next(min, max);
-        int card = deckOfCards.Next(min, max);
+        static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         string cardName;
         private void GetCard(int card) {
-            
+             
+            switch (compCard) {
+                case 11:
+                case 1:
+                    cardName = "ace";
+                    break;
+                case 12:
+                    cardName = "jack";
+                    break;
+                case 13:
+                    cardName = "queen";
+                    break;
+                case 14:
+                    cardName = "king";
+                    break;
+                default:
+                    cardName = card.ToString();
+                    break;
+            }
+
+            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
 
         }
         public BiggerCard(string tbUsername,string userBalance ) {
@@ -43,28 +63,7 @@ namespace WindowsFormsApp1 {
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
             pictureBoxPlayersCard.Visible = true;
-
-            string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
-            string cardName;
-            switch (yourCard) {
-                case 11:
-                case 1:
-                    cardName = "ace";
-                    break;
-                case 12:
-                    cardName = "jack";
-                    break;
-                case 13:
-                    cardName = "queen";
-                    break;
-                case 14:
-                    cardName = "king";
-                    break;
-                default:
-                    cardName = yourCard.ToString();
-                    break;
-            }
-
+            GetCard(yourCard);
             string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
 
             if (matchingFiles.Length > 0) {
@@ -74,7 +73,25 @@ namespace WindowsFormsApp1 {
                 throw new Exception("Image not found");
             }
         }
-
+        private void CardsResult() {
+            if (compCard > yourCard) {
+                textBoxPlayerStatus.Text = "You lose";
+            } else if (compCard < yourCard) {
+                textBoxPlayerStatus.Text = "You win";
+            } else textBoxPlayerStatus.Text = "Noone wins";
+        }
+        private int CurrentBalance(int ba, int be) {
+            var currentBalance = 0;
+            switch (textBoxPlayerStatus.Text) {
+                case "You win": return currentBalance = ba + be; break;
+                case "You lose": return currentBalance = ba - be; break;
+                case "Noone wins": return currentBalance = ba; break;
+            }
+            if (currentBalance < 0) {
+                throw new Exception("bet cant be proceed");
+            }
+            return currentBalance;
+        }
 
 
 
@@ -83,30 +100,9 @@ namespace WindowsFormsApp1 {
 
         }
 
-        private void buttonDrawComputerCard_Click(object sender, EventArgs e) {
-            pictureBoxPlayersCard.Visible = true;
-
-            string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
-            string cardName;
-            switch (compCard) {
-                case 11:
-                case 1:
-                    cardName = "ace";
-                    break;
-                case 12:
-                    cardName = "jack";
-                    break;
-                case 13:
-                    cardName = "queen";
-                    break;
-                case 14:
-                    cardName = "king";
-                    break;
-                default:
-                    cardName = compCard.ToString();
-                    break;
-            }
-
+        private void buttonDrawComputerCard_Click(object sender, EventArgs e ) {
+            pictureBoxComputersCard.Visible = true;
+            GetCard(compCard);
             string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
 
             if (matchingFiles.Length > 0) {
@@ -115,25 +111,14 @@ namespace WindowsFormsApp1 {
             } else {
                 throw new Exception("Image not found");
             }
-            if (compCard > yourCard) { textBoxPlayerStatus.Text = "You lose";
-            } else if (compCard < yourCard) {
-                textBoxPlayerStatus.Text = "You win";
-            }else textBoxPlayerStatus.Text = "Noone wins";
+            CardsResult();
         }
 
         private void textBoxPlayerStatus_TextChanged(object sender, EventArgs e) {
             int bet = int.Parse(textBoxBet.Text);
             int balance = int.Parse(textBoxBigCardUserBalance.Text);
             int result;
-            int CurrentBalance(int ba, int be) {
-               var currentBalance = 0;
-            switch(textBoxPlayerStatus.Text) {
-               case "You win": return currentBalance = ba + be; break;
-                   case "You lose": return currentBalance =  ba - be; break;
-                    case "Noone wins": return currentBalance = ba; break;
-            }
-                return currentBalance;
-            }
+          
             result = CurrentBalance(balance, bet);
            // result = balance + bet;
             textBoxBigCardUserBalance.Text = result.ToString();
