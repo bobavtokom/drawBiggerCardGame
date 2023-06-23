@@ -39,13 +39,10 @@ namespace WindowsFormsApp1 {
                     cardName = card.ToString();
                     break;
             }
-
-            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
-
         }
         public BiggerCard(string tbUsername,string userBalance ) {
             InitializeComponent();
-           textBoxBigCardUsername.Text = tbUsername;
+            textBoxBigCardUsername.Text = tbUsername;
             textBoxBigCardUserBalance.Text = userBalance.ToString();
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
@@ -67,7 +64,9 @@ namespace WindowsFormsApp1 {
             string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
 
             if (matchingFiles.Length > 0) {
-                string imagePath = matchingFiles[0];
+                Random random = new Random();
+                int randomIndex = random.Next(0, matchingFiles.Length);
+                string imagePath = matchingFiles[randomIndex];
                 pictureBoxPlayersCard.Image = Image.FromFile(imagePath);
             } else {
                 throw new Exception("Image not found");
@@ -106,7 +105,9 @@ namespace WindowsFormsApp1 {
             string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
 
             if (matchingFiles.Length > 0) {
-                string imagePath = matchingFiles[0];
+                Random random = new Random();
+                int randomIndex = random.Next(0, matchingFiles.Length);
+                string imagePath = matchingFiles[randomIndex];
                 pictureBoxComputersCard.Image = Image.FromFile(imagePath);
             } else {
                 throw new Exception("Image not found");
