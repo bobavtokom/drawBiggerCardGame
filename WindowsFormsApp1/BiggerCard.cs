@@ -68,6 +68,7 @@ namespace WindowsFormsApp1 {
                 int randomIndex = random.Next(0, matchingFiles.Length);
                 string imagePath = matchingFiles[randomIndex];
                 pictureBoxPlayersCard.Image = Image.FromFile(imagePath);
+                textBoxYourCard.Text = yourCard.ToString();
             } else {
                 throw new Exception("Image not found");
             }
@@ -109,6 +110,7 @@ namespace WindowsFormsApp1 {
                 int randomIndex = random.Next(0, matchingFiles.Length);
                 string imagePath = matchingFiles[randomIndex];
                 pictureBoxComputersCard.Image = Image.FromFile(imagePath);
+                textBoxCompCard.Text = compCard.ToString();
             } else {
                 throw new Exception("Image not found");
             }
@@ -141,6 +143,14 @@ namespace WindowsFormsApp1 {
         }
 
         private void textBoxDrawYourCard_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void playAgainButton_Click(object sender, EventArgs e) {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
 
         }
     }
