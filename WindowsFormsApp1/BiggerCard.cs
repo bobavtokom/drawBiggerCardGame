@@ -19,9 +19,18 @@ namespace WindowsFormsApp1 {
         public static int compCard = deckOfCards.Next(min, max);
         static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         string cardName;
+        public BiggerCard(string tbUsername,string userBalance ) {
+
+            InitializeComponent();
+            textBoxBigCardUsername.Text = tbUsername;
+            textBoxBigCardUserBalance.Text = userBalance.ToString();
+            pictureBoxPlayersCard.Visible = false;
+            pictureBoxComputersCard.Visible = false;
+            pictureBoxComputersCard.Visible = false;
+        }
         private void GetCard(int card) {
              
-            switch (compCard) {
+            switch (card) {
                 case 11:
                 case 1:
                     cardName = "ace";
@@ -39,14 +48,6 @@ namespace WindowsFormsApp1 {
                     cardName = card.ToString();
                     break;
             }
-        }
-        public BiggerCard(string tbUsername,string userBalance ) {
-            InitializeComponent();
-            textBoxBigCardUsername.Text = tbUsername;
-            textBoxBigCardUserBalance.Text = userBalance.ToString();
-            pictureBoxPlayersCard.Visible = false;
-            pictureBoxComputersCard.Visible = false;
-            pictureBoxComputersCard.Visible = false;
         }
 
         private void textBoxBet_TextChanged(object sender, EventArgs e) {
@@ -115,6 +116,7 @@ namespace WindowsFormsApp1 {
                 throw new Exception("Image not found");
             }
             CardsResult();
+            playAgainButton.Visible = true;
         }
 
         private void textBoxPlayerStatus_TextChanged(object sender, EventArgs e) {
@@ -147,7 +149,11 @@ namespace WindowsFormsApp1 {
         }
 
         private void playAgainButton_Click(object sender, EventArgs e) {
-
+            var biggerCard = new BiggerCard(textBoxBigCardUsername.Text, textBoxBigCardUserBalance.Text);
+            biggerCard.Show();
+            this.Close();
+            yourCard = deckOfCards.Next(min, max);
+            compCard = deckOfCards.Next(min, max);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
