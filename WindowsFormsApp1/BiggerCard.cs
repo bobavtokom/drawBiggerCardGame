@@ -11,19 +11,18 @@ using System.IO;
 
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
-        public int Bet => int.Parse(textBoxBet.Text); 
-        public static int min = 1;
-        public static int max = 14;
+        public static byte min = 1;
+        public static byte max = 14;
         public static Random deckOfCards = new Random();
-        public static int yourCard = deckOfCards.Next(min, max);
-        public static int compCard = deckOfCards.Next(min, max);
+        public static byte yourCard = (byte)deckOfCards.Next(min, max);
+        public static byte compCard = (byte)deckOfCards.Next(min, max);
         static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         string cardName;
         public BiggerCard(string tbUsername,string userBalance ) {
 
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
-            textBoxBigCardUserBalance.Text = userBalance.ToString();
+            textBoxBigCardUserBalance.Text = userBalance + ".00";
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
@@ -152,11 +151,15 @@ namespace WindowsFormsApp1 {
             var biggerCard = new BiggerCard(textBoxBigCardUsername.Text, textBoxBigCardUserBalance.Text);
             biggerCard.Show();
             this.Close();
-            yourCard = deckOfCards.Next(min, max);
-            compCard = deckOfCards.Next(min, max);
+            yourCard = (byte)deckOfCards.Next(min, max);
+            compCard = (byte)deckOfCards.Next(min, max);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
 
         }
     }

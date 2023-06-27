@@ -38,6 +38,7 @@
             this.playAgainButton = new System.Windows.Forms.Button();
             this.textBoxYourCard = new System.Windows.Forms.TextBox();
             this.textBoxCompCard = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayersCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxComputersCard)).BeginInit();
@@ -101,6 +102,7 @@
             this.textBoxBigCardUserBalance.Name = "textBoxBigCardUserBalance";
             this.textBoxBigCardUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxBigCardUserBalance.TabIndex = 8;
+            this.textBoxBigCardUserBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelBigCardUsername
             // 
@@ -176,12 +178,23 @@
             this.textBoxCompCard.Size = new System.Drawing.Size(100, 22);
             this.textBoxCompCard.TabIndex = 17;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(647, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "$";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // BiggerCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cyan;
             this.ClientSize = new System.Drawing.Size(1264, 785);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCompCard);
             this.Controls.Add(this.textBoxYourCard);
             this.Controls.Add(this.playAgainButton);
@@ -226,5 +239,6 @@
         private System.Windows.Forms.Button playAgainButton;
         private System.Windows.Forms.TextBox textBoxYourCard;
         private System.Windows.Forms.TextBox textBoxCompCard;
+        private System.Windows.Forms.Label label1;
     }
 }
