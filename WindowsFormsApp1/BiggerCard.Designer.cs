@@ -39,6 +39,7 @@
             this.textBoxYourCard = new System.Windows.Forms.TextBox();
             this.textBoxCompCard = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayersCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxComputersCard)).BeginInit();
@@ -59,6 +60,7 @@
             this.textBoxBet.Name = "textBoxBet";
             this.textBoxBet.Size = new System.Drawing.Size(100, 22);
             this.textBoxBet.TabIndex = 1;
+            this.textBoxBet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBet.TextChanged += new System.EventHandler(this.textBoxBet_TextChanged);
             // 
             // buttonDrawYourCard
@@ -181,12 +183,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(647, 45);
+            this.label1.Location = new System.Drawing.Point(410, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 16);
+            this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "$";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = ".00 $";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(653, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = ".00 $";
             // 
             // BiggerCard
             // 
@@ -194,6 +205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cyan;
             this.ClientSize = new System.Drawing.Size(1264, 785);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCompCard);
             this.Controls.Add(this.textBoxYourCard);
@@ -240,5 +252,6 @@
         private System.Windows.Forms.TextBox textBoxYourCard;
         private System.Windows.Forms.TextBox textBoxCompCard;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

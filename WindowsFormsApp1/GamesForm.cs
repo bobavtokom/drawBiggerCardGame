@@ -36,7 +36,7 @@ namespace WindowsFormsApp1 {
                     
                         if(checkBoxBiggerCard.Checked) {
 
-                            var biggerCard = new BiggerCard(textBoxUserNameP.Text, textBoxUserBalance.Text.ToString());
+                            var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
                             biggerCard.Show();
                     }
         }

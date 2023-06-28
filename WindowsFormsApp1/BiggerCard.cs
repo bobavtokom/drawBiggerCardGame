@@ -11,18 +11,18 @@ using System.IO;
 
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
-        public static byte min = 1;
-        public static byte max = 14;
+        public static byte min = 2;
+        public static byte max = 15;
         public static Random deckOfCards = new Random();
         public static byte yourCard = (byte)deckOfCards.Next(min, max);
         public static byte compCard = (byte)deckOfCards.Next(min, max);
         static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         string cardName;
-        public BiggerCard(string tbUsername,string userBalance ) {
+        public BiggerCard(string tbUsername,float userBalance ) {
 
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
-            textBoxBigCardUserBalance.Text = userBalance + ".00";
+            textBoxBigCardUserBalance.Text = userBalance.ToString();
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
@@ -31,7 +31,14 @@ namespace WindowsFormsApp1 {
              
             switch (card) {
                 case 11:
-                case 1:
+                    Random random = new Random();
+                    do {
+                        card = random.Next(2, 16);
+                    } while (card == 11);
+                    card = 2; 
+                    cardName = card.ToString();
+                    break;
+                case 15:
                     cardName = "ace";
                     break;
                 case 12:
@@ -74,24 +81,48 @@ namespace WindowsFormsApp1 {
             }
         }
         private void CardsResult() {
+            if ((yourCard == 11 || yourCard == 1) && (compCard != 1 && compCard != 11) && yourCard > compCard) {
+                textBoxPlayerStatus.Text = "You win";
+            }
+            if ((yourCard != 11 || yourCard != 1) && (compCard == 1 && compCard == 11) && yourCard < compCard) {
+                textBoxPlayerStatus.Text = "You lose";
+            }
             if (compCard > yourCard) {
                 textBoxPlayerStatus.Text = "You lose";
             } else if (compCard < yourCard) {
+                
                 textBoxPlayerStatus.Text = "You win";
             } else textBoxPlayerStatus.Text = "Noone wins";
         }
-        private int CurrentBalance(int ba, int be) {
-            var currentBalance = 0;
+        private float CurrentBalance(float ba, float be) {
+            float currentBalance = 0;
+
             switch (textBoxPlayerStatus.Text) {
-                case "You win": return currentBalance = ba + be; break;
-                case "You lose": return currentBalance = ba - be; break;
-                case "Noone wins": return currentBalance = ba; break;
+                case "You win":
+                    currentBalance = ba + be;
+                    if (currentBalance < 0) {
+                        throw new Exception("Bet cannot be proceeded: Negative balance");
+                    }
+                    break;
+
+                case "You lose":
+                    currentBalance = ba - be;
+                    if (currentBalance < 0) {
+                        throw new Exception("Bet cannot be proceeded: Negative balance");
+                    }
+                    break;
+
+                case "Noone wins":
+                    currentBalance = ba;
+                    break;
+
+                default:
+                    throw new Exception("Invalid player status");
             }
-            if (currentBalance < 0) {
-                throw new Exception("bet cant be proceed");
-            }
+
             return currentBalance;
         }
+
 
 
 
@@ -119,19 +150,19 @@ namespace WindowsFormsApp1 {
         }
 
         private void textBoxPlayerStatus_TextChanged(object sender, EventArgs e) {
-            int bet = int.Parse(textBoxBet.Text);
-            int balance = int.Parse(textBoxBigCardUserBalance.Text);
-            int result;
+            float bet = float.Parse(textBoxBet.Text);
+            float balance = float.Parse(textBoxBigCardUserBalance.Text.ToString());
+            float result;
           
             result = CurrentBalance(balance, bet);
            // result = balance + bet;
             textBoxBigCardUserBalance.Text = result.ToString();
             using(var dbUserNew = new EFDbNewUserEntities1()) {
-                int currentBalanceValue = int.Parse(textBoxBigCardUserBalance.Text);
+                float currentBalanceValue = float.Parse(textBoxBigCardUserBalance.Text);
                 string currentBiggerCardUser = textBoxBigCardUsername.Text;
                 var bigCardCurrentBalance = new UserNew {
                     UserNewName = currentBiggerCardUser,
-                    UserNewBalance = currentBalanceValue
+                    UserNewBalance = (int?)currentBalanceValue
                 };
                 dbUserNew.UserNews.Add(bigCardCurrentBalance);
                 dbUserNew.SaveChanges();
@@ -148,7 +179,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void playAgainButton_Click(object sender, EventArgs e) {
-            var biggerCard = new BiggerCard(textBoxBigCardUsername.Text, textBoxBigCardUserBalance.Text);
+            var biggerCard = new BiggerCard(textBoxBigCardUsername.Text, float.Parse(textBoxBigCardUserBalance.Text));
             biggerCard.Show();
             this.Close();
             yourCard = (byte)deckOfCards.Next(min, max);
@@ -160,6 +191,10 @@ namespace WindowsFormsApp1 {
         }
 
         private void label1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e) {
 
         }
     }
