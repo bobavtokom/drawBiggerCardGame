@@ -11,11 +11,13 @@ using System.IO;
 
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
-        public static byte min = 2;
-        public static byte max = 15;
-        public static Random deckOfCards = new Random();
-        public static byte yourCard = (byte)deckOfCards.Next(min, max);
-        public static byte compCard = (byte)deckOfCards.Next(min, max);
+
+        static byte[] deckOfCards = {2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15};
+        public static Random randomCards = new Random();
+        static byte randomIndex = (byte)randomCards.Next(0, deckOfCards.Length);
+        static byte randomIndex1 = (byte)randomCards.Next(0, deckOfCards.Length);
+        byte yourCard = deckOfCards[randomIndex];
+        byte compCard = deckOfCards[randomIndex1];
         static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         string cardName;
         public BiggerCard(string tbUsername,float userBalance ) {
@@ -27,17 +29,10 @@ namespace WindowsFormsApp1 {
             pictureBoxComputersCard.Visible = false;
             pictureBoxComputersCard.Visible = false;
         }
-        private void GetCard(int card) {
+        private void GetCard(int card, PictureBox pictureBox, TextBox textBox) {
              
             switch (card) {
-                case 11:
-                    Random random = new Random();
-                    do {
-                        card = random.Next(2, 16);
-                    } while (card == 11);
-                    card = 2; 
-                    cardName = card.ToString();
-                    break;
+
                 case 15:
                     cardName = "ace";
                     break;
@@ -54,6 +49,19 @@ namespace WindowsFormsApp1 {
                     cardName = card.ToString();
                     break;
             }
+            pictureBox.Visible = true;
+           
+            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
+
+            if (matchingFiles.Length > 0) {
+                Random random = new Random();
+                int randomIndex = random.Next(0, matchingFiles.Length);
+                string imagePath = matchingFiles[randomIndex];
+                pictureBox.Image = Image.FromFile(imagePath);
+                textBox.Text = card.ToString();
+            } else {
+                throw new Exception("Image not found");
+            }
         }
 
         private void textBoxBet_TextChanged(object sender, EventArgs e) {
@@ -66,27 +74,10 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
-            pictureBoxPlayersCard.Visible = true;
-            GetCard(yourCard);
-            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
-
-            if (matchingFiles.Length > 0) {
-                Random random = new Random();
-                int randomIndex = random.Next(0, matchingFiles.Length);
-                string imagePath = matchingFiles[randomIndex];
-                pictureBoxPlayersCard.Image = Image.FromFile(imagePath);
-                textBoxYourCard.Text = yourCard.ToString();
-            } else {
-                throw new Exception("Image not found");
-            }
+            GetCard(yourCard, pictureBoxPlayersCard, textBoxYourCard);
         }
         private void CardsResult() {
-            if ((yourCard == 11 || yourCard == 1) && (compCard != 1 && compCard != 11) && yourCard > compCard) {
-                textBoxPlayerStatus.Text = "You win";
-            }
-            if ((yourCard != 11 || yourCard != 1) && (compCard == 1 && compCard == 11) && yourCard < compCard) {
-                textBoxPlayerStatus.Text = "You lose";
-            }
+            
             if (compCard > yourCard) {
                 textBoxPlayerStatus.Text = "You lose";
             } else if (compCard < yourCard) {
@@ -132,19 +123,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawComputerCard_Click(object sender, EventArgs e ) {
-            pictureBoxComputersCard.Visible = true;
-            GetCard(compCard);
-            string[] matchingFiles = Directory.GetFiles(directoryPath, $"{cardName}_*");
-
-            if (matchingFiles.Length > 0) {
-                Random random = new Random();
-                int randomIndex = random.Next(0, matchingFiles.Length);
-                string imagePath = matchingFiles[randomIndex];
-                pictureBoxComputersCard.Image = Image.FromFile(imagePath);
-                textBoxCompCard.Text = compCard.ToString();
-            } else {
-                throw new Exception("Image not found");
-            }
+            GetCard(compCard, pictureBoxComputersCard, textBoxCompCard);
             CardsResult();
             playAgainButton.Visible = true;
         }
@@ -179,12 +158,16 @@ namespace WindowsFormsApp1 {
         }
 
         private void playAgainButton_Click(object sender, EventArgs e) {
+            Random randomCards = new Random();
+            randomIndex = (byte)randomCards.Next(0, deckOfCards.Length);
+            randomIndex1 = (byte)randomCards.Next(0, deckOfCards.Length);
+            yourCard = deckOfCards[randomIndex];
+            compCard = deckOfCards[randomIndex1];
+
             var biggerCard = new BiggerCard(textBoxBigCardUsername.Text, float.Parse(textBoxBigCardUserBalance.Text));
             biggerCard.Show();
             this.Close();
-            yourCard = (byte)deckOfCards.Next(min, max);
-            compCard = (byte)deckOfCards.Next(min, max);
-        }
+    }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
 
