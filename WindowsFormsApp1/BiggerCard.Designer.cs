@@ -27,8 +27,6 @@
             this.textBoxBet = new System.Windows.Forms.TextBox();
             this.buttonDrawYourCard = new System.Windows.Forms.Button();
             this.buttonDrawComputerCard = new System.Windows.Forms.Button();
-            this.textBoxDrawYourCard = new System.Windows.Forms.TextBox();
-            this.textBoxDrawComputersCard = new System.Windows.Forms.TextBox();
             this.textBoxPlayerStatus = new System.Windows.Forms.TextBox();
             this.textBoxBigCardUsername = new System.Windows.Forms.TextBox();
             this.textBoxBigCardUserBalance = new System.Windows.Forms.TextBox();
@@ -37,6 +35,11 @@
             this.pictureBoxPlayersCard = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxComputersCard = new System.Windows.Forms.PictureBox();
+            this.playAgainButton = new System.Windows.Forms.Button();
+            this.textBoxYourCard = new System.Windows.Forms.TextBox();
+            this.textBoxCompCard = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayersCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxComputersCard)).BeginInit();
@@ -57,6 +60,7 @@
             this.textBoxBet.Name = "textBoxBet";
             this.textBoxBet.Size = new System.Drawing.Size(100, 22);
             this.textBoxBet.TabIndex = 1;
+            this.textBoxBet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBet.TextChanged += new System.EventHandler(this.textBoxBet_TextChanged);
             // 
             // buttonDrawYourCard
@@ -79,22 +83,6 @@
             this.buttonDrawComputerCard.UseVisualStyleBackColor = true;
             this.buttonDrawComputerCard.Click += new System.EventHandler(this.buttonDrawComputerCard_Click);
             // 
-            // textBoxDrawYourCard
-            // 
-            this.textBoxDrawYourCard.Location = new System.Drawing.Point(162, 648);
-            this.textBoxDrawYourCard.Name = "textBoxDrawYourCard";
-            this.textBoxDrawYourCard.Size = new System.Drawing.Size(100, 22);
-            this.textBoxDrawYourCard.TabIndex = 4;
-            this.textBoxDrawYourCard.TextChanged += new System.EventHandler(this.textBoxDrawYourCard_TextChanged);
-            // 
-            // textBoxDrawComputersCard
-            // 
-            this.textBoxDrawComputersCard.Location = new System.Drawing.Point(1009, 623);
-            this.textBoxDrawComputersCard.Name = "textBoxDrawComputersCard";
-            this.textBoxDrawComputersCard.Size = new System.Drawing.Size(100, 22);
-            this.textBoxDrawComputersCard.TabIndex = 5;
-            this.textBoxDrawComputersCard.TextChanged += new System.EventHandler(this.textBoxDrawComputersCard_TextChanged);
-            // 
             // textBoxPlayerStatus
             // 
             this.textBoxPlayerStatus.Location = new System.Drawing.Point(561, 623);
@@ -116,6 +104,7 @@
             this.textBoxBigCardUserBalance.Name = "textBoxBigCardUserBalance";
             this.textBoxBigCardUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxBigCardUserBalance.TabIndex = 8;
+            this.textBoxBigCardUserBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelBigCardUsername
             // 
@@ -161,12 +150,66 @@
             this.pictureBoxComputersCard.TabIndex = 13;
             this.pictureBoxComputersCard.TabStop = false;
             // 
+            // playAgainButton
+            // 
+            this.playAgainButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.playAgainButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.playAgainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playAgainButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.playAgainButton.Location = new System.Drawing.Point(506, 448);
+            this.playAgainButton.Name = "playAgainButton";
+            this.playAgainButton.Size = new System.Drawing.Size(234, 70);
+            this.playAgainButton.TabIndex = 15;
+            this.playAgainButton.Text = "Play again";
+            this.playAgainButton.UseVisualStyleBackColor = false;
+            this.playAgainButton.Visible = false;
+            this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
+            // 
+            // textBoxYourCard
+            // 
+            this.textBoxYourCard.Location = new System.Drawing.Point(150, 623);
+            this.textBoxYourCard.Name = "textBoxYourCard";
+            this.textBoxYourCard.Size = new System.Drawing.Size(100, 22);
+            this.textBoxYourCard.TabIndex = 16;
+            this.textBoxYourCard.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBoxCompCard
+            // 
+            this.textBoxCompCard.Location = new System.Drawing.Point(1011, 614);
+            this.textBoxCompCard.Name = "textBoxCompCard";
+            this.textBoxCompCard.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCompCard.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(410, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = ".00 $";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(653, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = ".00 $";
+            // 
             // BiggerCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cyan;
             this.ClientSize = new System.Drawing.Size(1264, 785);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxCompCard);
+            this.Controls.Add(this.textBoxYourCard);
+            this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.pictureBoxComputersCard);
             this.Controls.Add(this.pictureBoxPlayersCard);
             this.Controls.Add(this.pictureBox1);
@@ -175,8 +218,6 @@
             this.Controls.Add(this.textBoxBigCardUserBalance);
             this.Controls.Add(this.textBoxBigCardUsername);
             this.Controls.Add(this.textBoxPlayerStatus);
-            this.Controls.Add(this.textBoxDrawComputersCard);
-            this.Controls.Add(this.textBoxDrawYourCard);
             this.Controls.Add(this.buttonDrawComputerCard);
             this.Controls.Add(this.buttonDrawYourCard);
             this.Controls.Add(this.textBoxBet);
@@ -199,8 +240,6 @@
         private System.Windows.Forms.TextBox textBoxBet;
         private System.Windows.Forms.Button buttonDrawYourCard;
         private System.Windows.Forms.Button buttonDrawComputerCard;
-        private System.Windows.Forms.TextBox textBoxDrawYourCard;
-        private System.Windows.Forms.TextBox textBoxDrawComputersCard;
         private System.Windows.Forms.TextBox textBoxPlayerStatus;
         private System.Windows.Forms.TextBox textBoxBigCardUsername;
         private System.Windows.Forms.TextBox textBoxBigCardUserBalance;
@@ -209,5 +248,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxPlayersCard;
         private System.Windows.Forms.PictureBox pictureBoxComputersCard;
+        private System.Windows.Forms.Button playAgainButton;
+        private System.Windows.Forms.TextBox textBoxYourCard;
+        private System.Windows.Forms.TextBox textBoxCompCard;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

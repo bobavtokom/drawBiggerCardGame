@@ -323,6 +323,8 @@
       <DependentUpon>ModelUserNew.edmx</DependentUpon>
       <LastGenOutput>ModelUserNew.cs</LastGenOutput>
     </Content>
+<<<<<<< HEAD
+=======
     <None Include="Resources\6_of_clubs.png" />
     <None Include="Resources\7_of_diamonds.png" />
     <None Include="Resources\7_of_clubs.png" />
@@ -335,6 +337,7 @@
     <None Include="Resources\5_of_clubs.png" />
     <None Include="Resources\4_of_spades.png" />
     <None Include="Resources\4_of_hearts.png" />
+>>>>>>> bab12bda17504b29d1c85cdb74d3e8244fdbe3d5
     <None Include="Resources\red_joker.png" />
     <None Include="Resources\queen_of_spades2.png" />
     <None Include="Resources\queen_of_spades.png" />

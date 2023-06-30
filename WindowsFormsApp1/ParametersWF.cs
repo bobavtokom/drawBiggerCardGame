@@ -45,7 +45,7 @@ namespace WindowsFormsApp1 {
         public static string YourCardIs { get; set; }
         public ParametersWF() {
             var languageNoteKey = new MenuEng();
-            if (mainMenu.Language == "english") {
+            if (mainMenu._language == "english") {
 
                 ComputerCardIs = languageNoteKey["computerCardIsEng"];
                 YourCardIs = languageNoteKey["yourCardIsEng"];
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1 {
                 NotValidInput = MenuEngStates.notValidInputEng;
                 DrawYourCard = languageNoteKey["drawYourCardEng"];
             }
-            if (mainMenu.Language == "macedonian") {
+            if (mainMenu._language == "macedonian") {
 
                 ComputerCardIs = languageNoteKey["computerCardIsMkd"];
                 YourCardIs = languageNoteKey["yourCardIsMkd"];

@@ -163,6 +163,7 @@
             this.Controls.Add(this.labelUserBalance);
             this.Controls.Add(this.labelUsername);
             this.Name = "GamesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GamesForm";
             this.Load += new System.EventHandler(this.GamesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMatrix)).EndInit();

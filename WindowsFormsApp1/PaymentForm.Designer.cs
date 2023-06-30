@@ -30,13 +30,13 @@
             this.cardNumberBox4 = new System.Windows.Forms.TextBox();
             this.expiredDate = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cardMaster = new System.Windows.Forms.PictureBox();
             this.buttonPay = new System.Windows.Forms.Button();
             this.cardName = new System.Windows.Forms.Label();
             this.cardNumber = new System.Windows.Forms.Label();
             this.expireDate = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cardMaster = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,8 +98,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(392, 678);
+            this.panel1.Size = new System.Drawing.Size(392, 760);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Designbolts_Credit_Card_Payment_Maestro_256;
+            this.pictureBox2.Location = new System.Drawing.Point(38, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(270, 223);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Double_J_Design_Ravenna_3d_Credit_Card_256;
+            this.pictureBox1.Location = new System.Drawing.Point(38, 427);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(286, 239);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // cardMaster
+            // 
+            this.cardMaster.Image = global::WindowsFormsApp1.Properties.Resources.Designbolts_Credit_Card_Payment_Master_Card_Blue_256;
+            this.cardMaster.Location = new System.Drawing.Point(38, 185);
+            this.cardMaster.Name = "cardMaster";
+            this.cardMaster.Size = new System.Drawing.Size(258, 236);
+            this.cardMaster.TabIndex = 1;
+            this.cardMaster.TabStop = false;
             // 
             // buttonPay
             // 
@@ -139,38 +166,11 @@
             this.expireDate.TabIndex = 7;
             this.expireDate.Text = "Expire Date";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Designbolts_Credit_Card_Payment_Maestro_256;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(270, 223);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Double_J_Design_Ravenna_3d_Credit_Card_256;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 427);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(286, 239);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // cardMaster
-            // 
-            this.cardMaster.Image = global::WindowsFormsApp1.Properties.Resources.Designbolts_Credit_Card_Payment_Master_Card_Blue_256;
-            this.cardMaster.Location = new System.Drawing.Point(38, 185);
-            this.cardMaster.Name = "cardMaster";
-            this.cardMaster.Size = new System.Drawing.Size(258, 236);
-            this.cardMaster.TabIndex = 1;
-            this.cardMaster.TabStop = false;
-            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 678);
+            this.ClientSize = new System.Drawing.Size(977, 760);
             this.Controls.Add(this.expireDate);
             this.Controls.Add(this.cardNumber);
             this.Controls.Add(this.cardName);
@@ -183,6 +183,7 @@
             this.Controls.Add(this.textBoxCardName);
             this.Controls.Add(this.panel1);
             this.Name = "PaymentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaymentForm";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
             this.panel1.ResumeLayout(false);
