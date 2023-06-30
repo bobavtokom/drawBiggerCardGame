@@ -3,31 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace WindowsFormsApp1 {
-    public partial class BiggerCard : Form {
+    public partialclass BiggerCard : Form {
+        public int Bet => int.Parse(textBoxBet.Text); 
+        public static int min = 1;
+        public static int max = 14;
+        public static Random deckOfCards = new Random();
+        public static int yourCard = deckOfCards.Next(min, max);
+        public static int compCard = deckOfCards.Next(min, max);
 
-        static byte[] deckOfCards = {2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15};
-        public static Random randomCards = new Random();
-        static byte randomIndex = (byte)randomCards.Next(0, deckOfCards.Length);
-        static byte randomIndex1 = (byte)randomCards.Next(0, deckOfCards.Length);
-        byte yourCard = deckOfCards[randomIndex];
-        byte compCard = deckOfCards[randomIndex1];
-        static string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
-        string cardName;
-        public BiggerCard(string tbUsername,float userBalance ) {
-
+        
+        public BiggerCard(string tbUsername,string userBalance ) {
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
             textBoxBigCardUserBalance.Text = userBalance.ToString();
             pictureBoxPlayersCard.Visible = false;
-            pictureBoxComputersCard.Visible = false;
-            pictureBoxComputersCard.Visible = false;
+            pictureBoxComputersCard.Visible = false; 
         }
         private void GetCard(int card, PictureBox pictureBox, TextBox textBox) {
              
@@ -71,6 +68,7 @@ namespace WindowsFormsApp1 {
         private void BiggerCard_Load(object sender, EventArgs e) {
             var dbUserNew = new EFDbNewUserEntities1();
             
+
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
