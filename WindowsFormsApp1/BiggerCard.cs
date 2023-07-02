@@ -10,21 +10,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
-    public partialclass BiggerCard : Form {
-        public int Bet => int.Parse(textBoxBet.Text); 
-        public static int min = 1;
-        public static int max = 14;
-        public static Random deckOfCards = new Random();
-        public static int yourCard = deckOfCards.Next(min, max);
-        public static int compCard = deckOfCards.Next(min, max);
+    public partial class BiggerCard : Form {
 
-        
-        public BiggerCard(string tbUsername,string userBalance ) {
+        private static byte[] deckOfCards = new byte[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15 };
+        private static Random randomCard = new Random();
+        private static byte randomIndex = (byte) randomCard.Next(0, deckOfCards.Length);
+        private static byte randomIndex1 = (byte) randomCard.Next(0, deckOfCards.Length);
+        private static byte yourCard = deckOfCards[randomIndex];
+        private byte compCard = deckOfCards[randomIndex1];
+        private string cardName;
+        private string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
+
+
+        public BiggerCard(string tbUsername, float userBalance ) {
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
             textBoxBigCardUserBalance.Text = userBalance.ToString();
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false; 
+            buttonDrawComputerCard.Enabled = false;
         }
         private void GetCard(int card, PictureBox pictureBox, TextBox textBox) {
              
@@ -62,7 +66,13 @@ namespace WindowsFormsApp1 {
         }
 
         private void textBoxBet_TextChanged(object sender, EventArgs e) {
-           
+            float bet;
+            if (!float.TryParse(textBoxBet.Text, out bet)) {
+                MessageBox.Show("Please enter a valid number", "ATTENTION", MessageBoxButtons.OK);
+                buttonDrawYourCard.Enabled = false;
+            } else {
+                buttonDrawYourCard.Enabled = true;
+            }
         }
 
         private void BiggerCard_Load(object sender, EventArgs e) {
@@ -73,6 +83,7 @@ namespace WindowsFormsApp1 {
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
             GetCard(yourCard, pictureBoxPlayersCard, textBoxYourCard);
+            buttonDrawComputerCard.Enabled = true;  
         }
         private void CardsResult() {
             
@@ -127,7 +138,11 @@ namespace WindowsFormsApp1 {
         }
 
         private void textBoxPlayerStatus_TextChanged(object sender, EventArgs e) {
-            float bet = float.Parse(textBoxBet.Text);
+            float bet;
+            if (!float.TryParse(textBoxBet.Text, out bet)) {
+                throw new FormatException("not a valid number");
+            }
+            bet = float.Parse(textBoxBet.Text);
             float balance = float.Parse(textBoxBigCardUserBalance.Text.ToString());
             float result;
           
