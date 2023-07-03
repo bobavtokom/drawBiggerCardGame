@@ -29,8 +29,9 @@ namespace WindowsFormsApp1 {
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false; 
             buttonDrawComputerCard.Enabled = false;
+            buttonDrawYourCard.Enabled = false;
         }
-        private void GetCard(int card, PictureBox pictureBox, TextBox textBox) {
+        private void GetCard(int card, PictureBox pictureBox) {
              
             switch (card) {
 
@@ -59,7 +60,6 @@ namespace WindowsFormsApp1 {
                 int randomIndex = random.Next(0, matchingFiles.Length);
                 string imagePath = matchingFiles[randomIndex];
                 pictureBox.Image = Image.FromFile(imagePath);
-                textBox.Text = card.ToString();
             } else {
                 throw new Exception("Image not found");
             }
@@ -82,7 +82,8 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
-            GetCard(yourCard, pictureBoxPlayersCard, textBoxYourCard);
+            GetCard(yourCard, pictureBoxPlayersCard);
+            buttonDrawYourCard.Enabled = false;
             buttonDrawComputerCard.Enabled = true;  
         }
         private void CardsResult() {
@@ -100,15 +101,13 @@ namespace WindowsFormsApp1 {
             switch (textBoxPlayerStatus.Text) {
                 case "You win":
                     currentBalance = ba + be;
-                    if (currentBalance < 0) {
-                        throw new Exception("Bet cannot be proceeded: Negative balance");
-                    }
                     break;
 
                 case "You lose":
                     currentBalance = ba - be;
-                    if (currentBalance < 0) {
-                        throw new Exception("Bet cannot be proceeded: Negative balance");
+                    if (currentBalance <= 0) {
+                        var userNewForm = new UserNewForm();
+                        userNewForm.Show();
                     }
                     break;
 
@@ -132,8 +131,9 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDrawComputerCard_Click(object sender, EventArgs e ) {
-            GetCard(compCard, pictureBoxComputersCard, textBoxCompCard);
+            GetCard(compCard, pictureBoxComputersCard);
             CardsResult();
+            buttonDrawComputerCard.Enabled = false;
             playAgainButton.Visible = true;
         }
 
@@ -147,7 +147,7 @@ namespace WindowsFormsApp1 {
             float result;
           
             result = CurrentBalance(balance, bet);
-           // result = balance + bet;
+
             textBoxBigCardUserBalance.Text = result.ToString();
             using(var dbUserNew = new EFDbNewUserEntities1()) {
                 float currentBalanceValue = float.Parse(textBoxBigCardUserBalance.Text);

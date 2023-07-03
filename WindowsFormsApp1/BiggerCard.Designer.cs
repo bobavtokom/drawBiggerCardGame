@@ -36,8 +36,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxComputersCard = new System.Windows.Forms.PictureBox();
             this.playAgainButton = new System.Windows.Forms.Button();
-            this.textBoxYourCard = new System.Windows.Forms.TextBox();
-            this.textBoxCompCard = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayersCard)).BeginInit();
@@ -65,30 +63,38 @@
             // 
             // buttonDrawYourCard
             // 
-            this.buttonDrawYourCard.Location = new System.Drawing.Point(73, 264);
+            this.buttonDrawYourCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonDrawYourCard.ForeColor = System.Drawing.Color.Lime;
+            this.buttonDrawYourCard.Location = new System.Drawing.Point(150, 264);
             this.buttonDrawYourCard.Name = "buttonDrawYourCard";
-            this.buttonDrawYourCard.Size = new System.Drawing.Size(142, 23);
+            this.buttonDrawYourCard.Size = new System.Drawing.Size(142, 32);
             this.buttonDrawYourCard.TabIndex = 2;
             this.buttonDrawYourCard.Text = "Draw your card";
-            this.buttonDrawYourCard.UseVisualStyleBackColor = true;
+            this.buttonDrawYourCard.UseVisualStyleBackColor = false;
             this.buttonDrawYourCard.Click += new System.EventHandler(this.buttonDrawYourCard_Click);
             // 
             // buttonDrawComputerCard
             // 
-            this.buttonDrawComputerCard.Location = new System.Drawing.Point(958, 264);
+            this.buttonDrawComputerCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonDrawComputerCard.ForeColor = System.Drawing.Color.Lime;
+            this.buttonDrawComputerCard.Location = new System.Drawing.Point(977, 264);
             this.buttonDrawComputerCard.Name = "buttonDrawComputerCard";
-            this.buttonDrawComputerCard.Size = new System.Drawing.Size(151, 23);
+            this.buttonDrawComputerCard.Size = new System.Drawing.Size(151, 32);
             this.buttonDrawComputerCard.TabIndex = 3;
             this.buttonDrawComputerCard.Text = "Draw computers card";
-            this.buttonDrawComputerCard.UseVisualStyleBackColor = true;
+            this.buttonDrawComputerCard.UseVisualStyleBackColor = false;
             this.buttonDrawComputerCard.Click += new System.EventHandler(this.buttonDrawComputerCard_Click);
             // 
             // textBoxPlayerStatus
             // 
-            this.textBoxPlayerStatus.Location = new System.Drawing.Point(561, 623);
+            this.textBoxPlayerStatus.BackColor = System.Drawing.Color.Black;
+            this.textBoxPlayerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPlayerStatus.ForeColor = System.Drawing.Color.Red;
+            this.textBoxPlayerStatus.Location = new System.Drawing.Point(535, 623);
             this.textBoxPlayerStatus.Name = "textBoxPlayerStatus";
-            this.textBoxPlayerStatus.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPlayerStatus.Size = new System.Drawing.Size(234, 45);
             this.textBoxPlayerStatus.TabIndex = 6;
+            this.textBoxPlayerStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPlayerStatus.TextChanged += new System.EventHandler(this.textBoxPlayerStatus_TextChanged);
             // 
             // textBoxBigCardUsername
@@ -126,7 +132,7 @@
             // 
             // pictureBoxPlayersCard
             // 
-            this.pictureBoxPlayersCard.Location = new System.Drawing.Point(117, 344);
+            this.pictureBoxPlayersCard.Location = new System.Drawing.Point(150, 344);
             this.pictureBoxPlayersCard.Name = "pictureBoxPlayersCard";
             this.pictureBoxPlayersCard.Size = new System.Drawing.Size(196, 228);
             this.pictureBoxPlayersCard.TabIndex = 12;
@@ -144,7 +150,7 @@
             // 
             // pictureBoxComputersCard
             // 
-            this.pictureBoxComputersCard.Location = new System.Drawing.Point(958, 344);
+            this.pictureBoxComputersCard.Location = new System.Drawing.Point(977, 344);
             this.pictureBoxComputersCard.Name = "pictureBoxComputersCard";
             this.pictureBoxComputersCard.Size = new System.Drawing.Size(198, 228);
             this.pictureBoxComputersCard.TabIndex = 13;
@@ -152,11 +158,11 @@
             // 
             // playAgainButton
             // 
-            this.playAgainButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.playAgainButton.BackColor = System.Drawing.Color.DarkSalmon;
             this.playAgainButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playAgainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playAgainButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playAgainButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.playAgainButton.Location = new System.Drawing.Point(506, 448);
+            this.playAgainButton.Location = new System.Drawing.Point(535, 448);
             this.playAgainButton.Name = "playAgainButton";
             this.playAgainButton.Size = new System.Drawing.Size(234, 70);
             this.playAgainButton.TabIndex = 15;
@@ -164,21 +170,6 @@
             this.playAgainButton.UseVisualStyleBackColor = false;
             this.playAgainButton.Visible = false;
             this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
-            // 
-            // textBoxYourCard
-            // 
-            this.textBoxYourCard.Location = new System.Drawing.Point(150, 623);
-            this.textBoxYourCard.Name = "textBoxYourCard";
-            this.textBoxYourCard.Size = new System.Drawing.Size(100, 22);
-            this.textBoxYourCard.TabIndex = 16;
-            this.textBoxYourCard.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBoxCompCard
-            // 
-            this.textBoxCompCard.Location = new System.Drawing.Point(1011, 614);
-            this.textBoxCompCard.Name = "textBoxCompCard";
-            this.textBoxCompCard.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCompCard.TabIndex = 17;
             // 
             // label1
             // 
@@ -203,12 +194,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Cyan;
+            this.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClientSize = new System.Drawing.Size(1264, 785);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxCompCard);
-            this.Controls.Add(this.textBoxYourCard);
             this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.pictureBoxComputersCard);
             this.Controls.Add(this.pictureBoxPlayersCard);
@@ -249,8 +238,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPlayersCard;
         private System.Windows.Forms.PictureBox pictureBoxComputersCard;
         private System.Windows.Forms.Button playAgainButton;
-        private System.Windows.Forms.TextBox textBoxYourCard;
-        private System.Windows.Forms.TextBox textBoxCompCard;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

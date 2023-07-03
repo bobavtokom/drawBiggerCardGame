@@ -20,12 +20,11 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
             buttonYes.Visible = false;
             buttonNo.Visible = false;
-            buttonMiddle.Visible = false;   
         }
         private void MainMenuLanguage(string language) {
             _language = language;
             var parametersWf = new ParametersWF();
-            mainMenuTextBox.Text = parametersWf.GamesMenu + parametersWf.ChoosePayToPlay;
+            mainMenuTextBox.Text = parametersWf.GamesMenu;
             buttonNo.Visible = true;
             buttonYes.Visible = true;
         }
@@ -49,6 +48,8 @@ namespace WindowsFormsApp1 {
             mainMenuTextBox.Text = ParametersWF.MaybeNextTime;
             buttonYes.Visible = false;
             buttonNo.Visible = false;
+            buttonEng.Visible = false;
+            buttonMkd.Visible = false;
         }
 
       

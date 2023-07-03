@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,13 +34,28 @@ namespace WindowsFormsApp1 {
             userNew.UserNewId = 0;
         }
 
-        private void UserNewForm_Load(object sender, EventArgs e) {
+        private async void UserNewForm_Load(object sender, EventArgs e) {
             Clear();
             this.ActiveControl = textBoxUserName;
-            LoadData();
+            await LoadDataAsync();
+        }
+        private async Task LoadDataAsync() {
+            try {
+                using (var context = new EFDbNewUserEntities1()) {
+
+                    var lastRecord = await context.UserNews.OrderByDescending(x => x.UserNewId).FirstOrDefaultAsync();
+                    var bindingList = new BindingList<UserNew>(new[] { lastRecord });
+                    var source = new BindingSource(bindingList, null);
+                    dataGridViewNewUser.DataSource = source;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e) {
+
+        private async void buttonSave_Click(object sender, EventArgs e) {
             userNew.UserNewName = textBoxUserName.Text.Trim();
             userNew.UserNewBalance = Convert.ToInt32(textBoxUserBalance.Text.Trim());
             
@@ -54,18 +70,15 @@ namespace WindowsFormsApp1 {
                     db.SaveChanges();
             }
             Clear();
-            LoadData();
+            await LoadDataAsync();
             MessageBox.Show("Successfully submitted");
         }
         public void LoadData() {
-                var context = new EFDbNewUserEntities1();
-                var lastRecord = context.UserNews.OrderByDescending(x => x.UserNewId).FirstOrDefault();
-                var bindingList = new BindingList<UserNew>(new[] { lastRecord });
-                var source = new BindingSource(bindingList,null);
-                dataGridViewNewUser.DataSource = source;
+               
         }
 
         private void dataGridViewNewUser_DoubleClick(object sender, EventArgs e) {
+
             if(dataGridViewNewUser.CurrentRow.Index != -1) {
                 userNew.UserNewId = Convert.ToInt32(dataGridViewNewUser.CurrentRow.Cells["UserNewId"].Value);
                 using(EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
@@ -79,6 +92,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonDelete_Click(object sender, EventArgs e) {
+
             if(MessageBox.Show("Are you sure to delete this record?","Message",MessageBoxButtons.YesNo)== DialogResult.Yes) {
                 using(EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
                     var entry = db.Entry(userNew);
@@ -95,6 +109,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonPay_Click(object sender, EventArgs e) {
+
             var paymentForm = new PaymentForm();
             paymentForm.ShowDialog();
         }
