@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class UserNewForm : Form {
+
         UserNew userNew = new UserNew();
         public string  Username { get; set; }
         public int UserBalance { get; set; }
@@ -18,11 +19,6 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
             buttonPay.Enabled = false;  
         }
-
-        private void button1_Click(object sender, EventArgs e) {
-
-        }
-
         private void buttonCancel_Click(object sender, EventArgs e) {
                 
              Clear();
@@ -39,6 +35,7 @@ namespace WindowsFormsApp1 {
             this.ActiveControl = textBoxUserName;
             await LoadDataAsync();
         }
+
         private async Task LoadDataAsync() {
             try {
                 using (var context = new EFDbNewUserEntities1()) {
@@ -53,7 +50,6 @@ namespace WindowsFormsApp1 {
                 MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private async void buttonSave_Click(object sender, EventArgs e) {
             userNew.UserNewName = textBoxUserName.Text.Trim();
@@ -73,9 +69,6 @@ namespace WindowsFormsApp1 {
             await LoadDataAsync();
             MessageBox.Show("Successfully submitted");
         }
-        public void LoadData() {
-               
-        }
 
         private void dataGridViewNewUser_DoubleClick(object sender, EventArgs e) {
 
@@ -91,7 +84,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e) {
+        private async void buttonDelete_Click(object sender, EventArgs e) {
 
             if(MessageBox.Show("Are you sure to delete this record?","Message",MessageBoxButtons.YesNo)== DialogResult.Yes) {
                 using(EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
@@ -100,7 +93,7 @@ namespace WindowsFormsApp1 {
                         db.UserNews.Attach(userNew);
                         db.UserNews.Remove(userNew);
                         db.SaveChanges();
-                        LoadData();
+                       await LoadDataAsync();
                         Clear();
                         MessageBox.Show("Successfully removed record");
                     }
@@ -112,6 +105,7 @@ namespace WindowsFormsApp1 {
 
             var paymentForm = new PaymentForm();
             paymentForm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
         }
         private void UserWalletForm_Load(object sender, EventArgs e) {
+
             var context = new EFDbCardPayingEntity();
             var lastRecord = context.CardPayings.OrderByDescending(x => x.CardPayingId).FirstOrDefault();
             var bindingList = new BindingList<CardPaying>(new[] { lastRecord });
@@ -31,19 +32,9 @@ namespace WindowsFormsApp1 {
             textBoxUserBalance.Text = UserBalance.ToString();
         }
 
-        private void dataGridViewUserWallet_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void buttonPlay_Click(object sender, EventArgs e) {
             var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
             biggerCard.Show();
-
-
         }
     }
 }

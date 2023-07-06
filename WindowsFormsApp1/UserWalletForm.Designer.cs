@@ -52,7 +52,6 @@
             this.dataGridViewUserWallet.RowTemplate.Height = 24;
             this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 119);
             this.dataGridViewUserWallet.TabIndex = 0;
-            this.dataGridViewUserWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserWallet_CellContentClick);
             // 
             // dgvCardPayingId
             // 

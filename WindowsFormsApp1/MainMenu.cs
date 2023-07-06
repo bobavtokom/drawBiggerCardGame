@@ -42,6 +42,7 @@ namespace WindowsFormsApp1 {
         private async void buttonYes_Click(object sender, EventArgs e) {
             var userNewForm = new UserNewForm();
             await Task.Run(()=> userNewForm.ShowDialog());
+            this.Close();
         }
         
         private void buttonNo_Click(object sender, EventArgs e) {
@@ -50,12 +51,6 @@ namespace WindowsFormsApp1 {
             buttonNo.Visible = false;
             buttonEng.Visible = false;
             buttonMkd.Visible = false;
-        }
-
-      
-
-        private void button1_Click(object sender, EventArgs e) {
-
         }
     }
 }
