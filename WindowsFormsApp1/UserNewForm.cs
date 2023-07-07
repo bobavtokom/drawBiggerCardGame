@@ -13,6 +13,7 @@ namespace WindowsFormsApp1 {
     public partial class UserNewForm : Form {
 
         UserNew userNew = new UserNew();
+        
         public string  Username { get; set; }
         public int UserBalance { get; set; }
         public UserNewForm() {
@@ -52,23 +53,44 @@ namespace WindowsFormsApp1 {
         }
 
         private async void buttonSave_Click(object sender, EventArgs e) {
-            userNew.UserNewName = textBoxUserName.Text.Trim();
-            userNew.UserNewBalance = Convert.ToInt32(textBoxUserBalance.Text.Trim());
-            
-            using (EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
-                if (userNew.UserNewId == 0) {
-                    db.UserNews.Add(userNew);
-                    buttonPay.Enabled = true;
-                } else {
-                    db.Entry(userNew).State = System.Data.Entity.EntityState.Modified;
-                    buttonPay.Enabled = true;
+            try {
+                string userName = textBoxUserName.Text.Trim();
+                string userBalanceText = textBoxUserBalance.Text.Trim();
+
+                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userBalanceText)) {
+                    MessageBox.Show("Please enter a valid name and balance.");
+                    return;
                 }
-                    db.SaveChanges();
+
+                if (!int.TryParse(userBalanceText, out int userBalance)) {
+                    MessageBox.Show("Please enter a valid integer for the balance.");
+                    return;
+                }
+
+                userNew.UserNewName = userName;
+                userNew.UserNewBalance = userBalance;
+
+                using (EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
+                    if (userNew.UserNewId == 0) {
+                        db.UserNews.Add(userNew);
+                        buttonPay.Enabled = true;
+                    } else {
+                        db.Entry(userNew).State = System.Data.Entity.EntityState.Modified;
+                        buttonPay.Enabled = true;
+                    }
+
+                    await db.SaveChangesAsync();
+                }
+
+                Clear();
+                await LoadDataAsync();
+                MessageBox.Show("Successfully submitted");
             }
-            Clear();
-            await LoadDataAsync();
-            MessageBox.Show("Successfully submitted");
+            catch (Exception ex) {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
+
 
         private void dataGridViewNewUser_DoubleClick(object sender, EventArgs e) {
 
@@ -106,6 +128,17 @@ namespace WindowsFormsApp1 {
             var paymentForm = new PaymentForm();
             paymentForm.ShowDialog();
             this.Close();
+        }
+
+        private void textBoxUserBalance_TextChanged(object sender, EventArgs e) {
+            if(userNew.UserNewId != 0) {
+                textBoxUserBalance.ReadOnly = true;
+                textBoxUserName.ReadOnly = true;
+            } else {
+                if(!float.TryParse(textBoxUserBalance.Text, out var balance)) {
+                    MessageBox.Show("Please enter a valid number", "ATTENTION", MessageBoxButtons.OK);
+                }
+            }
         }
     }
 }

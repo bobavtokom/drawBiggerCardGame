@@ -91,7 +91,6 @@ namespace WindowsFormsApp1 {
         private void BiggerCard_Load(object sender, EventArgs e) {
             var dbUserNew = new EFDbNewUserEntities1();
             
-
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {

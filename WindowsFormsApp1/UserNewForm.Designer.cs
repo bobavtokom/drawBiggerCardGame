@@ -89,6 +89,7 @@
             this.textBoxUserBalance.Name = "textBoxUserBalance";
             this.textBoxUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxUserBalance.TabIndex = 6;
+            this.textBoxUserBalance.TextChanged += new System.EventHandler(this.textBoxUserBalance_TextChanged);
             // 
             // dataGridViewNewUser
             // 
