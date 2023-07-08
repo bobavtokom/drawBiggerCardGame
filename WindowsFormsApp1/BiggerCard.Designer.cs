@@ -89,10 +89,12 @@
             // textBoxPlayerStatus
             // 
             this.textBoxPlayerStatus.BackColor = System.Drawing.Color.Black;
+            this.textBoxPlayerStatus.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPlayerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPlayerStatus.ForeColor = System.Drawing.Color.Red;
             this.textBoxPlayerStatus.Location = new System.Drawing.Point(535, 623);
             this.textBoxPlayerStatus.Name = "textBoxPlayerStatus";
+            this.textBoxPlayerStatus.ReadOnly = true;
             this.textBoxPlayerStatus.Size = new System.Drawing.Size(234, 45);
             this.textBoxPlayerStatus.TabIndex = 6;
             this.textBoxPlayerStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -107,7 +109,7 @@
             // 
             // textBoxBigCardUserBalance
             // 
-            this.textBoxBigCardUserBalance.Location = new System.Drawing.Point(547, 42);
+            this.textBoxBigCardUserBalance.Location = new System.Drawing.Point(587, 42);
             this.textBoxBigCardUserBalance.Name = "textBoxBigCardUserBalance";
             this.textBoxBigCardUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxBigCardUserBalance.TabIndex = 8;
@@ -125,7 +127,7 @@
             // labelBigCardBalance
             // 
             this.labelBigCardBalance.AutoSize = true;
-            this.labelBigCardBalance.Location = new System.Drawing.Point(452, 48);
+            this.labelBigCardBalance.Location = new System.Drawing.Point(488, 45);
             this.labelBigCardBalance.Name = "labelBigCardBalance";
             this.labelBigCardBalance.Size = new System.Drawing.Size(57, 16);
             this.labelBigCardBalance.TabIndex = 10;
@@ -142,7 +144,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.playing_cards_back_on_white_background_with_path_DFE2552;
-            this.pictureBox1.Location = new System.Drawing.Point(506, 106);
+            this.pictureBox1.Location = new System.Drawing.Point(581, 113);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(356, 240);
             this.pictureBox1.TabIndex = 11;
@@ -150,7 +152,7 @@
             // 
             // pictureBoxComputersCard
             // 
-            this.pictureBoxComputersCard.Location = new System.Drawing.Point(977, 344);
+            this.pictureBoxComputersCard.Location = new System.Drawing.Point(987, 344);
             this.pictureBoxComputersCard.Name = "pictureBoxComputersCard";
             this.pictureBoxComputersCard.Size = new System.Drawing.Size(198, 228);
             this.pictureBoxComputersCard.TabIndex = 13;
@@ -183,7 +185,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(653, 45);
+            this.label2.Location = new System.Drawing.Point(693, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 16);
             this.label2.TabIndex = 19;

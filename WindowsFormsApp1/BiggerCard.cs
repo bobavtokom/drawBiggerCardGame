@@ -12,14 +12,14 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1 {
     public partial class BiggerCard : Form {
 
-        private static byte[] deckOfCards = new byte[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15 };
-        private static Random randomCard = new Random();
+        private static readonly byte[] deckOfCards = new byte[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15 };
+        private static readonly Random randomCard = new Random();
         private static byte randomIndex;
         private static byte randomIndex1;
         private static byte yourCard;
         private byte compCard;
         private string cardName;
-        private string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
+        private readonly string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         float bet;
 
         void CardsShuffle(Random randoms) {
@@ -100,13 +100,17 @@ namespace WindowsFormsApp1 {
             buttonDrawComputerCard.Focus();
         }
         private void CardsResult() {
-            
+
             if (compCard > yourCard) {
                 textBoxPlayerStatus.Text = "You lose";
             } else if (compCard < yourCard) {
-                
+
                 textBoxPlayerStatus.Text = "You win";
-            } else textBoxPlayerStatus.Text = "Noone wins";
+                textBoxPlayerStatus.ForeColor = Color.GreenYellow;
+            } else {
+                textBoxPlayerStatus.Text = "Noone wins";
+                textBoxPlayerStatus.ForeColor = Color.Blue;
+            }
         }
         private float CurrentBalance(float ba, float be) {
             float currentBalance = 0;
@@ -139,6 +143,7 @@ namespace WindowsFormsApp1 {
             CardsResult();
             buttonDrawComputerCard.Enabled = false;
             playAgainButton.Visible = true;
+            playAgainButton.Focus();
             cashOutButton.Visible = true;
         }
 

@@ -40,22 +40,24 @@
             // 
             // buttonDelete
             // 
+            this.buttonDelete.BackColor = System.Drawing.Color.Red;
             this.buttonDelete.Location = new System.Drawing.Point(67, 252);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 42);
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(67, 321);
+            this.buttonCancel.BackColor = System.Drawing.Color.Yellow;
+            this.buttonCancel.Location = new System.Drawing.Point(67, 331);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 39);
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelUserName
@@ -101,6 +103,7 @@
             this.UserNewBalance});
             this.dataGridViewNewUser.Location = new System.Drawing.Point(209, 190);
             this.dataGridViewNewUser.Name = "dataGridViewNewUser";
+            this.dataGridViewNewUser.ReadOnly = true;
             this.dataGridViewNewUser.RowHeadersWidth = 51;
             this.dataGridViewNewUser.RowTemplate.Height = 24;
             this.dataGridViewNewUser.Size = new System.Drawing.Size(524, 104);
@@ -113,6 +116,7 @@
             this.UserNewId.HeaderText = "User Id";
             this.UserNewId.MinimumWidth = 6;
             this.UserNewId.Name = "UserNewId";
+            this.UserNewId.ReadOnly = true;
             this.UserNewId.Visible = false;
             this.UserNewId.Width = 125;
             // 
@@ -123,6 +127,7 @@
             this.UserNewName.HeaderText = "Username";
             this.UserNewName.MinimumWidth = 6;
             this.UserNewName.Name = "UserNewName";
+            this.UserNewName.ReadOnly = true;
             // 
             // UserNewBalance
             // 
@@ -130,21 +135,23 @@
             this.UserNewBalance.HeaderText = "Balance";
             this.UserNewBalance.MinimumWidth = 6;
             this.UserNewBalance.Name = "UserNewBalance";
+            this.UserNewBalance.ReadOnly = true;
             this.UserNewBalance.Width = 125;
             // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.LightSeaGreen;
             this.buttonSave.Location = new System.Drawing.Point(67, 166);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 40);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonPay
             // 
-            this.buttonPay.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonPay.BackColor = System.Drawing.Color.Black;
             this.buttonPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonPay.Location = new System.Drawing.Point(385, 321);
@@ -159,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(977, 760);
             this.Controls.Add(this.buttonPay);
             this.Controls.Add(this.buttonSave);

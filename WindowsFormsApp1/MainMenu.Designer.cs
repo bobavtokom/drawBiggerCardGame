@@ -28,6 +28,8 @@
             this.buttonNo = new System.Windows.Forms.Button();
             this.buttonEng = new System.Windows.Forms.Button();
             this.buttonMkd = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuTextBox
@@ -43,13 +45,13 @@
             this.mainMenuTextBox.Name = "mainMenuTextBox";
             this.mainMenuTextBox.Size = new System.Drawing.Size(707, 375);
             this.mainMenuTextBox.TabIndex = 1;
-            this.mainMenuTextBox.Text = "";
+            this.mainMenuTextBox.Text = "\n\n                           Draw Bigger Card Game";
             // 
             // buttonYes
             // 
-            this.buttonYes.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonYes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonYes.Location = new System.Drawing.Point(362, 461);
+            this.buttonYes.BackColor = System.Drawing.SystemColors.Desktop;
+            this.buttonYes.ForeColor = System.Drawing.Color.Lime;
+            this.buttonYes.Location = new System.Drawing.Point(308, 539);
             this.buttonYes.Name = "buttonYes";
             this.buttonYes.Size = new System.Drawing.Size(75, 41);
             this.buttonYes.TabIndex = 3;
@@ -59,9 +61,9 @@
             // 
             // buttonNo
             // 
-            this.buttonNo.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonNo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonNo.Location = new System.Drawing.Point(531, 461);
+            this.buttonNo.BackColor = System.Drawing.SystemColors.Desktop;
+            this.buttonNo.ForeColor = System.Drawing.Color.Red;
+            this.buttonNo.Location = new System.Drawing.Point(622, 539);
             this.buttonNo.Name = "buttonNo";
             this.buttonNo.Size = new System.Drawing.Size(75, 41);
             this.buttonNo.TabIndex = 4;
@@ -89,12 +91,22 @@
             this.buttonMkd.UseVisualStyleBackColor = true;
             this.buttonMkd.Click += new System.EventHandler(this.buttonMkd_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.playing_cards_back_on_white_background_with_path_DFE2551;
+            this.pictureBox1.Location = new System.Drawing.Point(352, 259);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(303, 227);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(977, 760);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonNo);
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.buttonEng);
@@ -103,6 +115,7 @@
             this.Name = "mainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main menu";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -114,6 +127,7 @@
         private System.Windows.Forms.Button buttonEng;
         private System.Windows.Forms.Button buttonYes;
         private System.Windows.Forms.Button buttonNo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

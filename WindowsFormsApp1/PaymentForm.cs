@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class PaymentForm : Form {
-
-        
         public PaymentForm() {
             InitializeComponent();
         }
@@ -22,6 +20,15 @@ namespace WindowsFormsApp1 {
         }
 
         private void buttonPay_Click(object sender, EventArgs e) {
+
+            if (string.IsNullOrWhiteSpace(textBoxCardName.Text) 
+                || string.IsNullOrWhiteSpace(cardNumberbox1.Text) 
+                || string.IsNullOrWhiteSpace(cardNumberBox2.Text)
+                || string.IsNullOrWhiteSpace(cardNumberBox3.Text)
+                || string.IsNullOrWhiteSpace(cardNumberBox4.Text)) 
+            {
+                MessageBox.Show("All fields are required", "Fill blank fields", MessageBoxButtons.OK);
+            } else {
 
             var userNewForm = new UserNewForm();
             var cardPaying = new EFDbCardPayingEntity();
@@ -39,6 +46,7 @@ namespace WindowsFormsApp1 {
             var userWallet = new UserWalletForm();
             userWallet.ShowDialog();
             this.Close();
+            }
         }
 
         private void cardNumberbox1_TextChanged(object sender, EventArgs e) {

@@ -28,8 +28,10 @@ namespace WindowsFormsApp1 {
             var dbUserNew = new EFDbNewUserEntities1();
             UserName = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewName).FirstOrDefault();
             textBoxUserNameP.Text = UserName;
+            textBoxUserNameP.ReadOnly = true;
             var UserBalance = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewBalance).FirstOrDefault();
             textBoxUserBalance.Text = UserBalance.ToString();
+            textBoxUserBalance.ReadOnly = true;
         }
 
         private void buttonPlay_Click(object sender, EventArgs e) {

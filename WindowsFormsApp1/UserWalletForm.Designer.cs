@@ -50,6 +50,7 @@
             this.dataGridViewUserWallet.Name = "dataGridViewUserWallet";
             this.dataGridViewUserWallet.RowHeadersWidth = 51;
             this.dataGridViewUserWallet.RowTemplate.Height = 24;
+            this.dataGridViewUserWallet.RowTemplate.ReadOnly = true;
             this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 119);
             this.dataGridViewUserWallet.TabIndex = 0;
             // 
