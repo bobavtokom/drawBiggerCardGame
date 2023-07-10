@@ -309,6 +309,7 @@
       <DependentUpon>ModelUserNew.edmx</DependentUpon>
       <LastGenOutput>ModelUserNew.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="ModelUserNew.edmx.sql" />
     <Content Include="ModelUserNew.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelUserNew.edmx</DependentUpon>

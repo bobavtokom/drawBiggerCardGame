@@ -57,8 +57,8 @@ namespace WindowsFormsApp1 {
                 string userName = textBoxUserName.Text.Trim();
                 string userBalanceText = textBoxUserBalance.Text.Trim();
 
-                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userBalanceText)) {
-                    MessageBox.Show("Please enter a valid name and balance.");
+                if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(userBalanceText)) {
+                    MessageBox.Show("Please fill out the fields.");
                     return;
                 }
 
@@ -66,7 +66,6 @@ namespace WindowsFormsApp1 {
                     MessageBox.Show("Please enter a valid integer for the balance.");
                     return;
                 }
-
                 userNew.UserNewName = userName;
                 userNew.UserNewBalance = userBalance;
 
