@@ -10,23 +10,41 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
-    public partialclass BiggerCard : Form {
-        public int Bet => int.Parse(textBoxBet.Text); 
-        public static int min = 1;
-        public static int max = 14;
-        public static Random deckOfCards = new Random();
-        public static int yourCard = deckOfCards.Next(min, max);
-        public static int compCard = deckOfCards.Next(min, max);
+    public partial class BiggerCard : Form {
 
-        
-        public BiggerCard(string tbUsername,string userBalance ) {
+        private static readonly byte[] deckOfCards = new byte[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15 };
+        private static readonly Random randomCard = new Random();
+        private static byte randomIndex;
+        private static byte randomIndex1;
+        private static byte yourCard;
+        private byte compCard;
+        private string cardName;
+        private readonly string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
+        float bet;
+
+        void CardsShuffle(Random randoms) {
+
+            randomIndex = (byte)randoms.Next(0, deckOfCards.Length);
+            randomIndex1 = (byte)randoms.Next(0, deckOfCards.Length);
+            yourCard = deckOfCards[randomIndex];
+            compCard = deckOfCards[randomIndex1];
+        }
+
+        public BiggerCard(string tbUsername, float userBalance ) {
+
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
             textBoxBigCardUserBalance.Text = userBalance.ToString();
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false; 
+            buttonDrawComputerCard.Enabled = false;
+            buttonDrawYourCard.Enabled = false;
+            cashOutButton.Visible= false;
+            CardsShuffle(randomCard);
+            textBoxPlayerStatus.ReadOnly = true;
         }
-        private void GetCard(int card, PictureBox pictureBox, TextBox textBox) {
+
+        private void GetCard(int card, PictureBox pictureBox) {
              
             switch (card) {
 
@@ -55,33 +73,44 @@ namespace WindowsFormsApp1 {
                 int randomIndex = random.Next(0, matchingFiles.Length);
                 string imagePath = matchingFiles[randomIndex];
                 pictureBox.Image = Image.FromFile(imagePath);
-                textBox.Text = card.ToString();
             } else {
                 throw new Exception("Image not found");
             }
         }
 
         private void textBoxBet_TextChanged(object sender, EventArgs e) {
-           
+            
+            if (!float.TryParse(textBoxBet.Text, out bet)) {
+                MessageBox.Show("Please enter a valid number", "ATTENTION", MessageBoxButtons.OK);
+                buttonDrawYourCard.Enabled = false;
+            } else {
+                buttonDrawYourCard.Enabled = true;
+            }
         }
 
         private void BiggerCard_Load(object sender, EventArgs e) {
             var dbUserNew = new EFDbNewUserEntities1();
             
-
         }
 
         private void buttonDrawYourCard_Click(object sender, EventArgs e) {
-            GetCard(yourCard, pictureBoxPlayersCard, textBoxYourCard);
+            GetCard(yourCard, pictureBoxPlayersCard);
+            buttonDrawYourCard.Enabled = false;
+            buttonDrawComputerCard.Enabled = true;  
+            buttonDrawComputerCard.Focus();
         }
         private void CardsResult() {
-            
+
             if (compCard > yourCard) {
                 textBoxPlayerStatus.Text = "You lose";
             } else if (compCard < yourCard) {
-                
+
                 textBoxPlayerStatus.Text = "You win";
-            } else textBoxPlayerStatus.Text = "Noone wins";
+                textBoxPlayerStatus.ForeColor = Color.GreenYellow;
+            } else {
+                textBoxPlayerStatus.Text = "Noone wins";
+                textBoxPlayerStatus.ForeColor = Color.Blue;
+            }
         }
         private float CurrentBalance(float ba, float be) {
             float currentBalance = 0;
@@ -89,15 +118,13 @@ namespace WindowsFormsApp1 {
             switch (textBoxPlayerStatus.Text) {
                 case "You win":
                     currentBalance = ba + be;
-                    if (currentBalance < 0) {
-                        throw new Exception("Bet cannot be proceeded: Negative balance");
-                    }
                     break;
 
                 case "You lose":
                     currentBalance = ba - be;
-                    if (currentBalance < 0) {
-                        throw new Exception("Bet cannot be proceeded: Negative balance");
+                    if (currentBalance <= 0) {
+                        var userNewForm = new UserNewForm();
+                        userNewForm.Show();
                     }
                     break;
 
@@ -111,28 +138,23 @@ namespace WindowsFormsApp1 {
 
             return currentBalance;
         }
-
-
-
-
-
-        private void textBoxDrawComputersCard_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void buttonDrawComputerCard_Click(object sender, EventArgs e ) {
-            GetCard(compCard, pictureBoxComputersCard, textBoxCompCard);
+            GetCard(compCard, pictureBoxComputersCard);
             CardsResult();
+            buttonDrawComputerCard.Enabled = false;
             playAgainButton.Visible = true;
+            playAgainButton.Focus();
+            cashOutButton.Visible = true;
         }
 
         private void textBoxPlayerStatus_TextChanged(object sender, EventArgs e) {
-            float bet = float.Parse(textBoxBet.Text);
+          
+            bet = float.Parse(textBoxBet.Text);
             float balance = float.Parse(textBoxBigCardUserBalance.Text.ToString());
             float result;
           
             result = CurrentBalance(balance, bet);
-           // result = balance + bet;
+
             textBoxBigCardUserBalance.Text = result.ToString();
             using(var dbUserNew = new EFDbNewUserEntities1()) {
                 float currentBalanceValue = float.Parse(textBoxBigCardUserBalance.Text);
@@ -144,18 +166,10 @@ namespace WindowsFormsApp1 {
                 dbUserNew.UserNews.Add(bigCardCurrentBalance);
                 dbUserNew.SaveChanges();
             }
-           
-        }
-
-        private void pictureBoxPlayersCard_Click(object sender, EventArgs e) {
-
-        }
-
-        private void textBoxDrawYourCard_TextChanged(object sender, EventArgs e) {
-
         }
 
         private void playAgainButton_Click(object sender, EventArgs e) {
+
             Random randomCards = new Random();
             randomIndex = (byte)randomCards.Next(0, deckOfCards.Length);
             randomIndex1 = (byte)randomCards.Next(0, deckOfCards.Length);
@@ -166,17 +180,13 @@ namespace WindowsFormsApp1 {
             biggerCard.Show();
             this.Close();
     }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e) {
-
+       
+        private void cashOutButtonClick(object sender, EventArgs e) {
+            var userWalletForm = new UserWalletForm();
+            userWalletForm.Show();
+            Random randomCards2 = new Random();
+            CardsShuffle(randomCards2);
+            this.Close();
         }
     }
 }

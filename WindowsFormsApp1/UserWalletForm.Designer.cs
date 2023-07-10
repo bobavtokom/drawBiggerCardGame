@@ -29,6 +29,10 @@
             this.dgvCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTimeOfPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonPlay = new System.Windows.Forms.Button();
+            this.textBoxUserNameP = new System.Windows.Forms.TextBox();
+            this.textBoxUserBalance = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserWallet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,9 +50,9 @@
             this.dataGridViewUserWallet.Name = "dataGridViewUserWallet";
             this.dataGridViewUserWallet.RowHeadersWidth = 51;
             this.dataGridViewUserWallet.RowTemplate.Height = 24;
+            this.dataGridViewUserWallet.RowTemplate.ReadOnly = true;
             this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 119);
             this.dataGridViewUserWallet.TabIndex = 0;
-            this.dataGridViewUserWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserWallet_CellContentClick);
             // 
             // dgvCardPayingId
             // 
@@ -94,12 +98,48 @@
             this.buttonPlay.UseVisualStyleBackColor = false;
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
             // 
+            // textBoxUserNameP
+            // 
+            this.textBoxUserNameP.Location = new System.Drawing.Point(338, 61);
+            this.textBoxUserNameP.Name = "textBoxUserNameP";
+            this.textBoxUserNameP.Size = new System.Drawing.Size(100, 22);
+            this.textBoxUserNameP.TabIndex = 2;
+            // 
+            // textBoxUserBalance
+            // 
+            this.textBoxUserBalance.Location = new System.Drawing.Point(338, 105);
+            this.textBoxUserBalance.Name = "textBoxUserBalance";
+            this.textBoxUserBalance.Size = new System.Drawing.Size(100, 22);
+            this.textBoxUserBalance.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(249, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "username";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(249, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "balance";
+            // 
             // UserWalletForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(977, 760);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxUserBalance);
+            this.Controls.Add(this.textBoxUserNameP);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.dataGridViewUserWallet);
             this.Name = "UserWalletForm";
@@ -108,6 +148,7 @@
             this.Load += new System.EventHandler(this.UserWalletForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserWallet)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,5 +160,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCardNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTimeOfPayment;
         private System.Windows.Forms.Button buttonPlay;
+        private System.Windows.Forms.TextBox textBoxUserNameP;
+        private System.Windows.Forms.TextBox textBoxUserBalance;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -30,32 +30,34 @@
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.textBoxUserBalance = new System.Windows.Forms.TextBox();
             this.dataGridViewNewUser = new System.Windows.Forms.DataGridView();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonPay = new System.Windows.Forms.Button();
             this.UserNewId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNewName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNewBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonPay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNewUser)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDelete
             // 
+            this.buttonDelete.BackColor = System.Drawing.Color.Red;
             this.buttonDelete.Location = new System.Drawing.Point(67, 252);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 42);
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(67, 321);
+            this.buttonCancel.BackColor = System.Drawing.Color.Yellow;
+            this.buttonCancel.Location = new System.Drawing.Point(67, 331);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 39);
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelUserName
@@ -82,6 +84,7 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(224, 22);
             this.textBoxUserName.TabIndex = 5;
+            this.textBoxUserName.Text = "nj";
             // 
             // textBoxUserBalance
             // 
@@ -89,6 +92,7 @@
             this.textBoxUserBalance.Name = "textBoxUserBalance";
             this.textBoxUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxUserBalance.TabIndex = 6;
+            this.textBoxUserBalance.TextChanged += new System.EventHandler(this.textBoxUserBalance_TextChanged);
             // 
             // dataGridViewNewUser
             // 
@@ -98,52 +102,29 @@
             this.UserNewId,
             this.UserNewName,
             this.UserNewBalance});
-            this.dataGridViewNewUser.Location = new System.Drawing.Point(209, 190);
+            this.dataGridViewNewUser.Location = new System.Drawing.Point(227, 190);
             this.dataGridViewNewUser.Name = "dataGridViewNewUser";
+            this.dataGridViewNewUser.ReadOnly = true;
             this.dataGridViewNewUser.RowHeadersWidth = 51;
             this.dataGridViewNewUser.RowTemplate.Height = 24;
-            this.dataGridViewNewUser.Size = new System.Drawing.Size(524, 104);
+            this.dataGridViewNewUser.Size = new System.Drawing.Size(506, 50);
             this.dataGridViewNewUser.TabIndex = 7;
             this.dataGridViewNewUser.DoubleClick += new System.EventHandler(this.dataGridViewNewUser_DoubleClick);
             // 
-            // UserNewId
-            // 
-            this.UserNewId.DataPropertyName = "UserNewId";
-            this.UserNewId.HeaderText = "User Id";
-            this.UserNewId.MinimumWidth = 6;
-            this.UserNewId.Name = "UserNewId";
-            this.UserNewId.Visible = false;
-            this.UserNewId.Width = 125;
-            // 
-            // UserNewName
-            // 
-            this.UserNewName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserNewName.DataPropertyName = "UserNewName";
-            this.UserNewName.HeaderText = "Username";
-            this.UserNewName.MinimumWidth = 6;
-            this.UserNewName.Name = "UserNewName";
-            // 
-            // UserNewBalance
-            // 
-            this.UserNewBalance.DataPropertyName = "UserNewBalance";
-            this.UserNewBalance.HeaderText = "Balance";
-            this.UserNewBalance.MinimumWidth = 6;
-            this.UserNewBalance.Name = "UserNewBalance";
-            this.UserNewBalance.Width = 125;
-            // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.LightSeaGreen;
             this.buttonSave.Location = new System.Drawing.Point(67, 166);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 40);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonPay
             // 
-            this.buttonPay.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonPay.BackColor = System.Drawing.Color.Black;
             this.buttonPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonPay.Location = new System.Drawing.Point(385, 321);
@@ -154,11 +135,39 @@
             this.buttonPay.UseVisualStyleBackColor = false;
             this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
             // 
+            // UserNewId
+            // 
+            this.UserNewId.DataPropertyName = "UserNewId";
+            this.UserNewId.HeaderText = "User Id";
+            this.UserNewId.MinimumWidth = 6;
+            this.UserNewId.Name = "UserNewId";
+            this.UserNewId.ReadOnly = true;
+            this.UserNewId.Visible = false;
+            this.UserNewId.Width = 125;
+            // 
+            // UserNewName
+            // 
+            this.UserNewName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserNewName.DataPropertyName = "UserNewName";
+            this.UserNewName.HeaderText = "Username";
+            this.UserNewName.MinimumWidth = 6;
+            this.UserNewName.Name = "UserNewName";
+            this.UserNewName.ReadOnly = true;
+            // 
+            // UserNewBalance
+            // 
+            this.UserNewBalance.DataPropertyName = "UserNewBalance";
+            this.UserNewBalance.HeaderText = "Balance";
+            this.UserNewBalance.MinimumWidth = 6;
+            this.UserNewBalance.Name = "UserNewBalance";
+            this.UserNewBalance.ReadOnly = true;
+            this.UserNewBalance.Width = 125;
+            // 
             // UserNewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(977, 760);
             this.Controls.Add(this.buttonPay);
             this.Controls.Add(this.buttonSave);
@@ -188,9 +197,9 @@
         private System.Windows.Forms.TextBox textBoxUserBalance;
         private System.Windows.Forms.DataGridView dataGridViewNewUser;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonPay;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNewId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNewName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNewBalance;
-        private System.Windows.Forms.Button buttonPay;
     }
 }

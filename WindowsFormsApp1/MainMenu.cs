@@ -20,12 +20,11 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
             buttonYes.Visible = false;
             buttonNo.Visible = false;
-            buttonMiddle.Visible = false;   
         }
         private void MainMenuLanguage(string language) {
             _language = language;
             var parametersWf = new ParametersWF();
-            mainMenuTextBox.Text = parametersWf.GamesMenu + parametersWf.ChoosePayToPlay;
+            mainMenuTextBox.Text = parametersWf.GamesMenu;
             buttonNo.Visible = true;
             buttonYes.Visible = true;
         }
@@ -43,18 +42,15 @@ namespace WindowsFormsApp1 {
         private async void buttonYes_Click(object sender, EventArgs e) {
             var userNewForm = new UserNewForm();
             await Task.Run(()=> userNewForm.ShowDialog());
+            this.Close();
         }
         
         private void buttonNo_Click(object sender, EventArgs e) {
             mainMenuTextBox.Text = ParametersWF.MaybeNextTime;
             buttonYes.Visible = false;
             buttonNo.Visible = false;
-        }
-
-      
-
-        private void button1_Click(object sender, EventArgs e) {
-
+            buttonEng.Visible = false;
+            buttonMkd.Visible = false;
         }
     }
 }
