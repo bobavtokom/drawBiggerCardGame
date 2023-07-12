@@ -17,5 +17,6 @@ namespace WindowsFormsApp1
         public int UserNewId { get; set; }
         public string UserNewName { get; set; }
         public Nullable<int> UserNewBalance { get; set; }
+        public string UserNewPassword { get; set; }
     }
 }

@@ -47,3 +47,4 @@ C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\obj\Debug\WindowsF
 C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BiggerCard.resources
 C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Resource1.resources
 C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Resource2.resources
+C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LoginPage.resources

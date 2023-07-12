@@ -29,12 +29,14 @@
             this.labelUserBalance = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.textBoxUserBalance = new System.Windows.Forms.TextBox();
-            this.dataGridViewNewUser = new System.Windows.Forms.DataGridView();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonPay = new System.Windows.Forms.Button();
-            this.UserNewId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserNewName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNewBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserNewName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserNewId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewNewUser = new System.Windows.Forms.DataGridView();
+            this.LabelPassword = new System.Windows.Forms.Label();
+            this.TextBoxPassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNewUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +86,6 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(224, 22);
             this.textBoxUserName.TabIndex = 5;
-            this.textBoxUserName.Text = "nj";
             // 
             // textBoxUserBalance
             // 
@@ -93,23 +94,6 @@
             this.textBoxUserBalance.Size = new System.Drawing.Size(100, 22);
             this.textBoxUserBalance.TabIndex = 6;
             this.textBoxUserBalance.TextChanged += new System.EventHandler(this.textBoxUserBalance_TextChanged);
-            // 
-            // dataGridViewNewUser
-            // 
-            this.dataGridViewNewUser.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewNewUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewNewUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserNewId,
-            this.UserNewName,
-            this.UserNewBalance});
-            this.dataGridViewNewUser.Location = new System.Drawing.Point(227, 190);
-            this.dataGridViewNewUser.Name = "dataGridViewNewUser";
-            this.dataGridViewNewUser.ReadOnly = true;
-            this.dataGridViewNewUser.RowHeadersWidth = 51;
-            this.dataGridViewNewUser.RowTemplate.Height = 24;
-            this.dataGridViewNewUser.Size = new System.Drawing.Size(506, 50);
-            this.dataGridViewNewUser.TabIndex = 7;
-            this.dataGridViewNewUser.DoubleClick += new System.EventHandler(this.dataGridViewNewUser_DoubleClick);
             // 
             // buttonSave
             // 
@@ -135,15 +119,14 @@
             this.buttonPay.UseVisualStyleBackColor = false;
             this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
             // 
-            // UserNewId
+            // UserNewBalance
             // 
-            this.UserNewId.DataPropertyName = "UserNewId";
-            this.UserNewId.HeaderText = "User Id";
-            this.UserNewId.MinimumWidth = 6;
-            this.UserNewId.Name = "UserNewId";
-            this.UserNewId.ReadOnly = true;
-            this.UserNewId.Visible = false;
-            this.UserNewId.Width = 125;
+            this.UserNewBalance.DataPropertyName = "UserNewBalance";
+            this.UserNewBalance.HeaderText = "Balance";
+            this.UserNewBalance.MinimumWidth = 6;
+            this.UserNewBalance.Name = "UserNewBalance";
+            this.UserNewBalance.ReadOnly = true;
+            this.UserNewBalance.Width = 125;
             // 
             // UserNewName
             // 
@@ -154,14 +137,48 @@
             this.UserNewName.Name = "UserNewName";
             this.UserNewName.ReadOnly = true;
             // 
-            // UserNewBalance
+            // UserNewId
             // 
-            this.UserNewBalance.DataPropertyName = "UserNewBalance";
-            this.UserNewBalance.HeaderText = "Balance";
-            this.UserNewBalance.MinimumWidth = 6;
-            this.UserNewBalance.Name = "UserNewBalance";
-            this.UserNewBalance.ReadOnly = true;
-            this.UserNewBalance.Width = 125;
+            this.UserNewId.DataPropertyName = "UserNewId";
+            this.UserNewId.HeaderText = "User Id";
+            this.UserNewId.MinimumWidth = 6;
+            this.UserNewId.Name = "UserNewId";
+            this.UserNewId.ReadOnly = true;
+            this.UserNewId.Visible = false;
+            this.UserNewId.Width = 125;
+            // 
+            // dataGridViewNewUser
+            // 
+            this.dataGridViewNewUser.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridViewNewUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewNewUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UserNewId,
+            this.UserNewName,
+            this.UserNewBalance});
+            this.dataGridViewNewUser.Location = new System.Drawing.Point(227, 190);
+            this.dataGridViewNewUser.Name = "dataGridViewNewUser";
+            this.dataGridViewNewUser.ReadOnly = true;
+            this.dataGridViewNewUser.RowHeadersWidth = 51;
+            this.dataGridViewNewUser.RowTemplate.Height = 24;
+            this.dataGridViewNewUser.Size = new System.Drawing.Size(506, 50);
+            this.dataGridViewNewUser.TabIndex = 7;
+            this.dataGridViewNewUser.DoubleClick += new System.EventHandler(this.dataGridViewNewUser_DoubleClick);
+            // 
+            // LabelPassword
+            // 
+            this.LabelPassword.AutoSize = true;
+            this.LabelPassword.Location = new System.Drawing.Point(252, 139);
+            this.LabelPassword.Name = "LabelPassword";
+            this.LabelPassword.Size = new System.Drawing.Size(67, 16);
+            this.LabelPassword.TabIndex = 10;
+            this.LabelPassword.Text = "Password";
+            // 
+            // TextBoxPassword
+            // 
+            this.TextBoxPassword.Location = new System.Drawing.Point(444, 139);
+            this.TextBoxPassword.Name = "TextBoxPassword";
+            this.TextBoxPassword.Size = new System.Drawing.Size(224, 22);
+            this.TextBoxPassword.TabIndex = 11;
             // 
             // UserNewForm
             // 
@@ -169,6 +186,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(977, 760);
+            this.Controls.Add(this.TextBoxPassword);
+            this.Controls.Add(this.LabelPassword);
             this.Controls.Add(this.buttonPay);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.dataGridViewNewUser);
@@ -195,11 +214,13 @@
         private System.Windows.Forms.Label labelUserBalance;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.TextBox textBoxUserBalance;
-        private System.Windows.Forms.DataGridView dataGridViewNewUser;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonPay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserNewId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserNewName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserNewBalance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserNewName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserNewId;
+        private System.Windows.Forms.DataGridView dataGridViewNewUser;
+        private System.Windows.Forms.Label LabelPassword;
+        private System.Windows.Forms.TextBox TextBoxPassword;
     }
 }

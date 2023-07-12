@@ -39,9 +39,9 @@ namespace WindowsFormsApp1 {
           MainMenuLanguage(English);
         }
 
-        private async void buttonYes_Click(object sender, EventArgs e) {
-            var userNewForm = new UserNewForm();
-            await Task.Run(()=> userNewForm.ShowDialog());
+        private void buttonYes_Click(object sender, EventArgs e) {
+            var loginPage = new LoginPage();
+            loginPage.ShowDialog();
             this.Close();
         }
         

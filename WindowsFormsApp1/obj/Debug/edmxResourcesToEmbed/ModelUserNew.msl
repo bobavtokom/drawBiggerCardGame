@@ -4,6 +4,7 @@
     <EntitySetMapping Name="UserNews">
       <EntityTypeMapping TypeName="EFDbNewUserModel1.UserNew">
         <MappingFragment StoreEntitySet="UserNew">
+          <ScalarProperty Name="UserNewPassword" ColumnName="UserNewPassword" />
           <ScalarProperty Name="UserNewId" ColumnName="UserNewId" />
           <ScalarProperty Name="UserNewName" ColumnName="UserNewName" />
           <ScalarProperty Name="UserNewBalance" ColumnName="UserNewBalance" />

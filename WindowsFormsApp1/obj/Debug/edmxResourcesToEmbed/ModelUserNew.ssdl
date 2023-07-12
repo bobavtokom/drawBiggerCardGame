@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="EFDbNewUserModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+<Schema Namespace="EFDbNewUserModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="UserNew">
     <Key>
       <PropertyRef Name="UserNewId" />
     </Key>
-    <Property Name="UserNewId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-    <Property Name="UserNewName" MaxLength="50" Type="nchar" />
+    <Property Name="UserNewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNewName" Type="nchar" MaxLength="50" />
     <Property Name="UserNewBalance" Type="int" />
+    <Property Name="UserNewPassword" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityContainer Name="EFDbNewUserModel1StoreContainer">
     <EntitySet Name="UserNew" EntityType="Self.UserNew" Schema="dbo" store:Type="Tables" />
