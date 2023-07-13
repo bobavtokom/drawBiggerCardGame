@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
-    public partial class UserNewForm : Form {
+    public partial class UserNewForm : Form, IClearForm {
 
         UserNew userNew = new UserNew();
-        
-        public string  Username { get; set; }
-        public int UserBalance { get; set; }
+
         public UserNewForm() {
             InitializeComponent();
             buttonPay.Enabled = false;  
@@ -24,8 +22,8 @@ namespace WindowsFormsApp1 {
                 
              Clear();
         }
-        void Clear() {
-            textBoxUserName.Text = textBoxUserBalance.Text = "";
+        public void Clear() {
+            textBoxUserName.Text = textBoxUserBalance.Text = TextBoxPassword.Text = "";
             buttonSave.Text = "Save";
             buttonDelete.Enabled = false;
             userNew.UserNewId = 0;
@@ -56,8 +54,9 @@ namespace WindowsFormsApp1 {
             try {
                 string userName = textBoxUserName.Text.Trim();
                 string userBalanceText = textBoxUserBalance.Text.Trim();
+                string password = TextBoxPassword.Text.Trim();
 
-                if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(userBalanceText)) {
+                if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(userBalanceText) || string.IsNullOrWhiteSpace(password)) {
                     MessageBox.Show("Please fill out the fields.");
                     return;
                 }
@@ -68,6 +67,7 @@ namespace WindowsFormsApp1 {
                 }
                 userNew.UserNewName = userName;
                 userNew.UserNewBalance = userBalance;
+                userNew.UserNewPassword = password;
 
                 using (EFDbNewUserEntities1 db = new EFDbNewUserEntities1()) {
                     if (userNew.UserNewId == 0) {
@@ -99,6 +99,7 @@ namespace WindowsFormsApp1 {
                     userNew = db.UserNews.Where(x => x.UserNewId == userNew.UserNewId).FirstOrDefault();
                     textBoxUserName.Text = userNew.UserNewName;
                     textBoxUserBalance.Text = userNew.UserNewBalance.ToString();
+                    TextBoxPassword.Text = userNew.UserNewPassword;
                 }
                 buttonSave.Text = "Update";
                 buttonDelete.Enabled = true;
