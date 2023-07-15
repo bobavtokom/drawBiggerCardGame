@@ -13,23 +13,41 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace WindowsFormsApp1 {
     public partial class UserWalletForm : Form {
         public string UserName { get; set; }
-        public int UserBalance { get; set; }
+        public string Password { get; set; }
+        public int? UserBalance { get; set; }
+        public string loggedUsername { get; set; }
+        public string loggedPassword { get; set; }
+
+        EFDbNewUserEntities1 dbUserNew = new EFDbNewUserEntities1();
         public UserWalletForm() {
             InitializeComponent();
         }
+        public UserWalletForm(string username, string password) {
+            InitializeComponent();
+            loggedUsername = username;
+            loggedPassword = password;
+        }
+        void IsLoggedIn() {
+            if (!string.IsNullOrWhiteSpace(loggedUsername) && !string.IsNullOrWhiteSpace(loggedPassword)){
+                textBoxUserNameP.Text = loggedUsername;
+                UserBalance = dbUserNew.UserNews.Where(u => u.UserNewName == loggedUsername).Select(u => u.UserNewBalance).FirstOrDefault();
+                
+            } else {
+                textBoxUserNameP.Text = UserName;
+            }
+        }
         private void UserWalletForm_Load(object sender, EventArgs e) {
-
+            
             var context = new EFDbCardPayingEntity();
             var lastRecord = context.CardPayings.OrderByDescending(x => x.CardPayingId).FirstOrDefault();
             var bindingList = new BindingList<CardPaying>(new[] { lastRecord });
             var source = new BindingSource(bindingList, null);
             dataGridViewUserWallet.DataSource = source;
             var userWalletForm = new UserWalletForm();
-            var dbUserNew = new EFDbNewUserEntities1();
             UserName = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewName).FirstOrDefault();
-            textBoxUserNameP.Text = UserName;
+            IsLoggedIn();
             textBoxUserNameP.ReadOnly = true;
-            var UserBalance = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewBalance).FirstOrDefault();
+            UserBalance = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewBalance).FirstOrDefault();
             textBoxUserBalance.Text = UserBalance.ToString();
             textBoxUserBalance.ReadOnly = true;
         }

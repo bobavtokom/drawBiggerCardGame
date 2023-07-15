@@ -29,18 +29,20 @@ namespace WindowsFormsApp1 {
                 string username = TextBoxUsername.Text.Trim();
                 string password = TextBoxPassword.Text.Trim();
 
-                if (!string.IsNullOrWhiteSpace(username) || !string.IsNullOrWhiteSpace(password)) {
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password)) {
                     var loginSuccess = await Task.Run(() =>
                         context.UserNews.Any(l => l.UserNewName == username && l.UserNewPassword == password));
 
                     if (loginSuccess) {
-                        PaymentForm paymentForm = new PaymentForm();
-                        paymentForm.ShowDialog();
+                        var userWallet = new UserWalletForm(username, password);
+                        userWallet.ShowDialog();
                         this.Close();
                     } else {
                         MessageBox.Show("User not found", "Login failed", MessageBoxButtons.OK);
                         Clear();
                     }
+                } else {
+                    MessageBox.Show("Please enter username and password", "Login failed", MessageBoxButtons.OK);
                 }
             }
         }
