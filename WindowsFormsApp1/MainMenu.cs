@@ -25,6 +25,7 @@ namespace WindowsFormsApp1 {
             _language = language;
             var parametersWf = new ParametersWF();
             mainMenuTextBox.Text = parametersWf.GamesMenu;
+            mainMenuTextBox.WordWrap = false;
             buttonNo.Visible = true;
             buttonYes.Visible = true;
         }

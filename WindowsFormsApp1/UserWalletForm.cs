@@ -15,8 +15,8 @@ namespace WindowsFormsApp1 {
         public string UserName { get; set; }
         public string Password { get; set; }
         public int? UserBalance { get; set; }
-        public string loggedUsername { get; set; }
-        public string loggedPassword { get; set; }
+        public string LoggedUsername { get; set; }
+        public string LoggedPassword { get; set; }
 
         EFDbNewUserEntities1 dbUserNew = new EFDbNewUserEntities1();
         public UserWalletForm() {
@@ -24,13 +24,13 @@ namespace WindowsFormsApp1 {
         }
         public UserWalletForm(string username, string password) {
             InitializeComponent();
-            loggedUsername = username;
-            loggedPassword = password;
+            LoggedUsername = username;
+            LoggedPassword = password;
         }
         void IsLoggedIn() {
-            if (!string.IsNullOrWhiteSpace(loggedUsername) && !string.IsNullOrWhiteSpace(loggedPassword)){
-                textBoxUserNameP.Text = loggedUsername;
-                UserBalance = dbUserNew.UserNews.Where(u => u.UserNewName == loggedUsername).Select(u => u.UserNewBalance).FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(LoggedUsername) && !string.IsNullOrWhiteSpace(LoggedPassword)){
+                textBoxUserNameP.Text = LoggedUsername;
+                UserBalance = dbUserNew.UserNews.Where(u => u.UserNewName == LoggedUsername).Select(u => u.UserNewBalance).FirstOrDefault();
                 
             } else {
                 textBoxUserNameP.Text = UserName;

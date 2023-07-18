@@ -22,6 +22,7 @@ namespace WindowsFormsApp1 {
         private readonly string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         float bet;
 
+
         void CardsShuffle(Random randoms) {
 
             randomIndex = (byte)randoms.Next(0, deckOfCards.Length);
@@ -123,8 +124,9 @@ namespace WindowsFormsApp1 {
                 case "You lose":
                     currentBalance = ba - be;
                     if (currentBalance <= 0) {
-                        var userNewForm = new UserNewForm();
-                        userNewForm.Show();
+                        MessageBox.Show("To continue playing please add balance", "EMPTY WALLET", MessageBoxButtons.OK);
+                        UserNewForm userNewForm = new UserNewForm();    
+                        userNewForm.ShowDialog();
                     }
                     break;
 
