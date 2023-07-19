@@ -11,8 +11,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class LoginPage : Form , IClearForm {
+        public string Username { get; set; }
+        
         public LoginPage() {
             InitializeComponent();
+            TextBoxUsername.KeyDown += textBoxUsername_KeyDown;
+            TextBoxPassword.KeyDown += textBoxPassword_KeyDown;
         }
         public void Clear() {
             TextBoxUsername.Text = TextBoxPassword.Text = "";
@@ -21,6 +25,28 @@ namespace WindowsFormsApp1 {
             var userNewForm = new UserNewForm();
             await Task.Run(() => userNewForm.ShowDialog());
             this.Close();
+        }
+        private void textBoxUsername_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+
+                Username = TextBoxUsername.Text.Trim();
+
+                if (!string.IsNullOrWhiteSpace(Username)) {
+                    TextBoxPassword.Focus();
+                    e.SuppressKeyPress = true; 
+                }
+            }
+        } 
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+
+                string password = TextBoxPassword.Text.Trim();
+
+                if (!string.IsNullOrWhiteSpace(password)) {
+                     buttonLogin.Focus();
+                    e.SuppressKeyPress = true; 
+                }
+            }
         }
 
         private async void buttonLogin_Click(object sender, EventArgs e) {

@@ -21,8 +21,11 @@ namespace WindowsFormsApp1 {
         private string cardName;
         private readonly string directoryPath = @"C:\Users\Boban\source\repos\GamesMySqlWPFApp\WindowsFormsApp1\Resources\";
         float bet;
+        public float CurrentUserBalance { get; set; }
 
-
+        public BiggerCard() {
+            CurrentUserBalance = float.Parse(textBoxBigCardUserBalance.Text);
+        }
         void CardsShuffle(Random randoms) {
 
             randomIndex = (byte)randoms.Next(0, deckOfCards.Length);
@@ -36,6 +39,7 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
             textBoxBigCardUsername.Text = tbUsername;
             textBoxBigCardUserBalance.Text = userBalance.ToString();
+            CurrentUserBalance = userBalance;
             pictureBoxPlayersCard.Visible = false;
             pictureBoxComputersCard.Visible = false; 
             buttonDrawComputerCard.Enabled = false;
@@ -81,8 +85,9 @@ namespace WindowsFormsApp1 {
 
         private void textBoxBet_TextChanged(object sender, EventArgs e) {
             
-            if (!float.TryParse(textBoxBet.Text, out bet)) {
-                MessageBox.Show("Please enter a valid number", "ATTENTION", MessageBoxButtons.OK);
+            if (!float.TryParse(textBoxBet.Text, out bet) || bet > CurrentUserBalance) {
+                MessageBox.Show("not valid number or bet is higher than balance", "ATTENTION", MessageBoxButtons.OK);
+                textBoxBet.Text = string.Empty;
                 buttonDrawYourCard.Enabled = false;
             } else {
                 buttonDrawYourCard.Enabled = true;
@@ -123,11 +128,6 @@ namespace WindowsFormsApp1 {
 
                 case "You lose":
                     currentBalance = ba - be;
-                    if (currentBalance <= 0) {
-                        MessageBox.Show("To continue playing please add balance", "EMPTY WALLET", MessageBoxButtons.OK);
-                        UserNewForm userNewForm = new UserNewForm();    
-                        userNewForm.ShowDialog();
-                    }
                     break;
 
                 case "Noone wins":
@@ -154,9 +154,7 @@ namespace WindowsFormsApp1 {
             bet = float.Parse(textBoxBet.Text);
             float balance = float.Parse(textBoxBigCardUserBalance.Text.ToString());
             float result;
-          
             result = CurrentBalance(balance, bet);
-
             textBoxBigCardUserBalance.Text = result.ToString();
             using(var dbUserNew = new EFDbNewUserEntities1()) {
                 float currentBalanceValue = float.Parse(textBoxBigCardUserBalance.Text);
@@ -167,6 +165,11 @@ namespace WindowsFormsApp1 {
                 };
                 dbUserNew.UserNews.Add(bigCardCurrentBalance);
                 dbUserNew.SaveChanges();
+            }
+            if (result <= 0) {
+                MessageBox.Show("To continue playing please add balance", "EMPTY WALLET", MessageBoxButtons.OK);
+                UserNewForm userNewForm = new UserNewForm();
+                userNewForm.ShowDialog();
             }
         }
 
