@@ -187,8 +187,11 @@ namespace WindowsFormsApp1 {
     }
        
         private void cashOutButtonClick(object sender, EventArgs e) {
+
             var userWalletForm = new UserWalletForm();
+            userWalletForm.CashoutSwitch = true;
             userWalletForm.Show();
+
             Random randomCards2 = new Random();
             CardsShuffle(randomCards2);
             this.Close();

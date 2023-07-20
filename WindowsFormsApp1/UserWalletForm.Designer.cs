@@ -28,7 +28,7 @@
             this.dgvCardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTimeOfPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonPlay = new System.Windows.Forms.Button();
+            this.ButtonPlay = new System.Windows.Forms.Button();
             this.textBoxUserNameP = new System.Windows.Forms.TextBox();
             this.textBoxUserBalance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,11 +48,13 @@
             this.dataGridViewUserWallet.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewUserWallet.Location = new System.Drawing.Point(102, 212);
             this.dataGridViewUserWallet.Name = "dataGridViewUserWallet";
+            this.dataGridViewUserWallet.ReadOnly = true;
             this.dataGridViewUserWallet.RowHeadersWidth = 51;
             this.dataGridViewUserWallet.RowTemplate.Height = 24;
             this.dataGridViewUserWallet.RowTemplate.ReadOnly = true;
             this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 119);
             this.dataGridViewUserWallet.TabIndex = 0;
+            this.dataGridViewUserWallet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserWalletForm_KeyDown);
             // 
             // dgvCardPayingId
             // 
@@ -87,16 +89,16 @@
             this.dgvTimeOfPayment.Name = "dgvTimeOfPayment";
             this.dgvTimeOfPayment.Width = 125;
             // 
-            // buttonPlay
+            // ButtonPlay
             // 
-            this.buttonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.buttonPlay.Location = new System.Drawing.Point(282, 384);
-            this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Size = new System.Drawing.Size(239, 48);
-            this.buttonPlay.TabIndex = 1;
-            this.buttonPlay.Text = "Play";
-            this.buttonPlay.UseVisualStyleBackColor = false;
-            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            this.ButtonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ButtonPlay.Location = new System.Drawing.Point(282, 384);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.Size = new System.Drawing.Size(239, 48);
+            this.ButtonPlay.TabIndex = 1;
+            this.ButtonPlay.Text = "Play";
+            this.ButtonPlay.UseVisualStyleBackColor = false;
+            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // textBoxUserNameP
             // 
@@ -140,7 +142,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxUserBalance);
             this.Controls.Add(this.textBoxUserNameP);
-            this.Controls.Add(this.buttonPlay);
+            this.Controls.Add(this.ButtonPlay);
             this.Controls.Add(this.dataGridViewUserWallet);
             this.Name = "UserWalletForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -159,7 +161,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCardName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCardNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTimeOfPayment;
-        private System.Windows.Forms.Button buttonPlay;
+        private System.Windows.Forms.Button ButtonPlay;
         private System.Windows.Forms.TextBox textBoxUserNameP;
         private System.Windows.Forms.TextBox textBoxUserBalance;
         private System.Windows.Forms.Label label1;

@@ -13,7 +13,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace WindowsFormsApp1 {
     public partial class UserWalletForm : Form {
         public string UserName { get; set; }
-        public string Password { get; set; }
+        private bool _cashoutSwitch = false;
+        public bool CashoutSwitch { 
+            get { return _cashoutSwitch; }
+            set { _cashoutSwitch = value; }
+         }
         public int? UserBalance { get; set; }
         public string LoggedUsername { get; set; }
         public string LoggedPassword { get; set; }
@@ -26,6 +30,8 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
             LoggedUsername = username;
             LoggedPassword = password;
+            this.KeyDown += UserWalletForm_KeyDown;
+
         }
         void IsLoggedIn() {
             if (!string.IsNullOrWhiteSpace(LoggedUsername) && !string.IsNullOrWhiteSpace(LoggedPassword)){
@@ -36,10 +42,19 @@ namespace WindowsFormsApp1 {
                 textBoxUserNameP.Text = UserName;
             }
         }
+        private void UserWalletForm_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+
+                var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
+                biggerCard.Show();
+                e.SuppressKeyPress = true;
+            }
+        }
         private void UserWalletForm_Load(object sender, EventArgs e) {
-            
+            ButtonPlay.Focus();
             var context = new EFDbCardPayingEntity();
             var lastRecord = context.CardPayings.OrderByDescending(x => x.CardPayingId).FirstOrDefault();
+            if(CashoutSwitch == true) lastRecord.TimeOfPayment = DateTime.Now;
             var bindingList = new BindingList<CardPaying>(new[] { lastRecord });
             var source = new BindingSource(bindingList, null);
             dataGridViewUserWallet.DataSource = source;
@@ -52,7 +67,7 @@ namespace WindowsFormsApp1 {
             textBoxUserBalance.ReadOnly = true;
         }
 
-        private void buttonPlay_Click(object sender, EventArgs e) {
+        private void ButtonPlay_Click(object sender, EventArgs e) {
             var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
             biggerCard.Show();
         }
