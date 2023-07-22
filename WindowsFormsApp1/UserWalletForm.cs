@@ -25,13 +25,14 @@ namespace WindowsFormsApp1 {
         EFDbNewUserEntities1 dbUserNew = new EFDbNewUserEntities1();
         public UserWalletForm() {
             InitializeComponent();
+            QuitButton.Visible = false;
         }
         public UserWalletForm(string username, string password) {
             InitializeComponent();
             LoggedUsername = username;
             LoggedPassword = password;
             this.KeyDown += UserWalletForm_KeyDown;
-
+            QuitButton.Visible = false;
         }
         void IsLoggedIn() {
             if (!string.IsNullOrWhiteSpace(LoggedUsername) && !string.IsNullOrWhiteSpace(LoggedPassword)){
@@ -70,6 +71,10 @@ namespace WindowsFormsApp1 {
         private void ButtonPlay_Click(object sender, EventArgs e) {
             var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
             biggerCard.Show();
+        }
+
+        private void QuitButton_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

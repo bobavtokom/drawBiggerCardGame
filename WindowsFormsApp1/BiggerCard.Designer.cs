@@ -47,17 +47,19 @@
             // labelBet
             // 
             this.labelBet.AutoSize = true;
-            this.labelBet.Location = new System.Drawing.Point(235, 113);
+            this.labelBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBet.Location = new System.Drawing.Point(246, 109);
             this.labelBet.Name = "labelBet";
-            this.labelBet.Size = new System.Drawing.Size(27, 16);
+            this.labelBet.Size = new System.Drawing.Size(52, 29);
             this.labelBet.TabIndex = 0;
             this.labelBet.Text = "Bet";
             // 
             // textBoxBet
             // 
+            this.textBoxBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBet.Location = new System.Drawing.Point(304, 113);
             this.textBoxBet.Name = "textBoxBet";
-            this.textBoxBet.Size = new System.Drawing.Size(100, 22);
+            this.textBoxBet.Size = new System.Drawing.Size(100, 30);
             this.textBoxBet.TabIndex = 1;
             this.textBoxBet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBet.TextChanged += new System.EventHandler(this.textBoxBet_TextChanged);
@@ -65,24 +67,26 @@
             // buttonDrawYourCard
             // 
             this.buttonDrawYourCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonDrawYourCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDrawYourCard.ForeColor = System.Drawing.Color.Lime;
-            this.buttonDrawYourCard.Location = new System.Drawing.Point(150, 264);
+            this.buttonDrawYourCard.Location = new System.Drawing.Point(150, 248);
             this.buttonDrawYourCard.Name = "buttonDrawYourCard";
-            this.buttonDrawYourCard.Size = new System.Drawing.Size(142, 32);
+            this.buttonDrawYourCard.Size = new System.Drawing.Size(166, 48);
             this.buttonDrawYourCard.TabIndex = 2;
-            this.buttonDrawYourCard.Text = "Draw your card";
+            this.buttonDrawYourCard.Text = "Player\'s card";
             this.buttonDrawYourCard.UseVisualStyleBackColor = false;
             this.buttonDrawYourCard.Click += new System.EventHandler(this.buttonDrawYourCard_Click);
             // 
             // buttonDrawComputerCard
             // 
             this.buttonDrawComputerCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonDrawComputerCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDrawComputerCard.ForeColor = System.Drawing.Color.Lime;
-            this.buttonDrawComputerCard.Location = new System.Drawing.Point(977, 264);
+            this.buttonDrawComputerCard.Location = new System.Drawing.Point(977, 248);
             this.buttonDrawComputerCard.Name = "buttonDrawComputerCard";
-            this.buttonDrawComputerCard.Size = new System.Drawing.Size(151, 32);
+            this.buttonDrawComputerCard.Size = new System.Drawing.Size(171, 48);
             this.buttonDrawComputerCard.TabIndex = 3;
-            this.buttonDrawComputerCard.Text = "Draw computers card";
+            this.buttonDrawComputerCard.Text = "Machine\'s card";
             this.buttonDrawComputerCard.UseVisualStyleBackColor = false;
             this.buttonDrawComputerCard.Click += new System.EventHandler(this.buttonDrawComputerCard_Click);
             // 
@@ -102,34 +106,38 @@
             // 
             // textBoxBigCardUsername
             // 
+            this.textBoxBigCardUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBigCardUsername.Location = new System.Drawing.Point(304, 42);
             this.textBoxBigCardUsername.Name = "textBoxBigCardUsername";
-            this.textBoxBigCardUsername.Size = new System.Drawing.Size(100, 22);
+            this.textBoxBigCardUsername.Size = new System.Drawing.Size(156, 30);
             this.textBoxBigCardUsername.TabIndex = 7;
             // 
             // textBoxBigCardUserBalance
             // 
+            this.textBoxBigCardUserBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBigCardUserBalance.Location = new System.Drawing.Point(587, 42);
             this.textBoxBigCardUserBalance.Name = "textBoxBigCardUserBalance";
-            this.textBoxBigCardUserBalance.Size = new System.Drawing.Size(100, 22);
+            this.textBoxBigCardUserBalance.Size = new System.Drawing.Size(100, 30);
             this.textBoxBigCardUserBalance.TabIndex = 8;
             this.textBoxBigCardUserBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelBigCardUsername
             // 
             this.labelBigCardUsername.AutoSize = true;
-            this.labelBigCardUsername.Location = new System.Drawing.Point(206, 48);
+            this.labelBigCardUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBigCardUsername.Location = new System.Drawing.Point(166, 38);
             this.labelBigCardUsername.Name = "labelBigCardUsername";
-            this.labelBigCardUsername.Size = new System.Drawing.Size(70, 16);
+            this.labelBigCardUsername.Size = new System.Drawing.Size(132, 29);
             this.labelBigCardUsername.TabIndex = 9;
             this.labelBigCardUsername.Text = "Username";
             // 
             // labelBigCardBalance
             // 
             this.labelBigCardBalance.AutoSize = true;
-            this.labelBigCardBalance.Location = new System.Drawing.Point(488, 45);
+            this.labelBigCardBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBigCardBalance.Location = new System.Drawing.Point(474, 38);
             this.labelBigCardBalance.Name = "labelBigCardBalance";
-            this.labelBigCardBalance.Size = new System.Drawing.Size(57, 16);
+            this.labelBigCardBalance.Size = new System.Drawing.Size(107, 29);
             this.labelBigCardBalance.TabIndex = 10;
             this.labelBigCardBalance.Text = "Balance";
             // 
@@ -162,7 +170,7 @@
             // 
             this.playAgainButton.BackColor = System.Drawing.Color.DarkSalmon;
             this.playAgainButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playAgainButton.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playAgainButton.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playAgainButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.playAgainButton.Location = new System.Drawing.Point(535, 448);
             this.playAgainButton.Name = "playAgainButton";
@@ -176,18 +184,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(410, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 16);
+            this.label1.Size = new System.Drawing.Size(60, 25);
             this.label1.TabIndex = 18;
             this.label1.Text = ".00 $";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(693, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 16);
+            this.label2.Size = new System.Drawing.Size(60, 25);
             this.label2.TabIndex = 19;
             this.label2.Text = ".00 $";
             // 
@@ -200,7 +210,7 @@
             this.cashOutButton.Name = "cashOutButton";
             this.cashOutButton.Size = new System.Drawing.Size(234, 66);
             this.cashOutButton.TabIndex = 20;
-            this.cashOutButton.Text = "CASH OUT";
+            this.cashOutButton.Text = "Cash out";
             this.cashOutButton.UseVisualStyleBackColor = false;
             this.cashOutButton.Click += new System.EventHandler(this.cashOutButtonClick);
             // 
