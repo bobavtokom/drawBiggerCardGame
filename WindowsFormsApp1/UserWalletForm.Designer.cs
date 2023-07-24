@@ -110,16 +110,18 @@
             // 
             // textBoxUserNameP
             // 
+            this.textBoxUserNameP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUserNameP.Location = new System.Drawing.Point(338, 68);
             this.textBoxUserNameP.Name = "textBoxUserNameP";
-            this.textBoxUserNameP.Size = new System.Drawing.Size(166, 22);
+            this.textBoxUserNameP.Size = new System.Drawing.Size(166, 30);
             this.textBoxUserNameP.TabIndex = 2;
             // 
             // textBoxUserBalance
             // 
+            this.textBoxUserBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUserBalance.Location = new System.Drawing.Point(338, 118);
             this.textBoxUserBalance.Name = "textBoxUserBalance";
-            this.textBoxUserBalance.Size = new System.Drawing.Size(88, 22);
+            this.textBoxUserBalance.Size = new System.Drawing.Size(88, 30);
             this.textBoxUserBalance.TabIndex = 3;
             // 
             // label1
@@ -196,12 +198,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCardName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCardNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTimeOfPayment;
-        private System.Windows.Forms.Button ButtonPlay;
         private System.Windows.Forms.TextBox textBoxUserNameP;
         private System.Windows.Forms.TextBox textBoxUserBalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button QuitButton;
+        public System.Windows.Forms.Button ButtonPlay;
     }
 }

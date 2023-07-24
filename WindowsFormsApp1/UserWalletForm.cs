@@ -48,6 +48,7 @@ namespace WindowsFormsApp1 {
 
                 var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
                 biggerCard.Show();
+                ButtonPlay.Visible = false;
                 e.SuppressKeyPress = true;
             }
         }

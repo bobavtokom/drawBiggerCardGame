@@ -192,6 +192,7 @@ namespace WindowsFormsApp1 {
             userWalletForm.CashoutSwitch = true;
             userWalletForm.Show();
             userWalletForm.QuitButton.Visible = true;
+            userWalletForm.ButtonPlay.Visible = false;
             Random randomCards2 = new Random();
             CardsShuffle(randomCards2);
             this.Close();
