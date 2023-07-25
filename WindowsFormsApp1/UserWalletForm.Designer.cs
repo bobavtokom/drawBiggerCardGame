@@ -54,7 +54,7 @@
             this.dataGridViewUserWallet.RowHeadersWidth = 51;
             this.dataGridViewUserWallet.RowTemplate.Height = 24;
             this.dataGridViewUserWallet.RowTemplate.ReadOnly = true;
-            this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 119);
+            this.dataGridViewUserWallet.Size = new System.Drawing.Size(591, 70);
             this.dataGridViewUserWallet.TabIndex = 0;
             this.dataGridViewUserWallet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserWalletForm_KeyDown);
             // 

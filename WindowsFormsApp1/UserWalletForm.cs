@@ -25,7 +25,7 @@ namespace WindowsFormsApp1 {
         EFDbNewUserEntities1 dbUserNew = new EFDbNewUserEntities1();
         public UserWalletForm() {
             InitializeComponent();
-            QuitButton.Visible = false;
+           QuitButton.Visible = false;
         }
         public UserWalletForm(string username, string password) {
             InitializeComponent();
@@ -33,6 +33,7 @@ namespace WindowsFormsApp1 {
             LoggedPassword = password;
             this.KeyDown += UserWalletForm_KeyDown;
             QuitButton.Visible = false;
+            ButtonPlay.Focus();
         }
         void IsLoggedIn() {
             if (!string.IsNullOrWhiteSpace(LoggedUsername) && !string.IsNullOrWhiteSpace(LoggedPassword)){
@@ -44,14 +45,19 @@ namespace WindowsFormsApp1 {
             }
         }
         private void UserWalletForm_KeyDown(object sender, KeyEventArgs e) {
+
             if (e.KeyCode == Keys.Enter) {
 
                 var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
                 biggerCard.Show();
+
+                QuitButton.Visible = true;
                 ButtonPlay.Visible = false;
                 e.SuppressKeyPress = true;
             }
         }
+
+
         private void UserWalletForm_Load(object sender, EventArgs e) {
             ButtonPlay.Focus();
             var context = new EFDbCardPayingEntity();
