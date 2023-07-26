@@ -33,40 +33,46 @@ namespace WindowsFormsApp1 {
             LoggedPassword = password;
             this.KeyDown += UserWalletForm_KeyDown;
             QuitButton.Visible = false;
-            ButtonPlay.Focus();
+            QuitButton.Focus();
         }
         void IsLoggedIn() {
             if (!string.IsNullOrWhiteSpace(LoggedUsername) && !string.IsNullOrWhiteSpace(LoggedPassword)){
                 textBoxUserNameP.Text = LoggedUsername;
                 UserBalance = dbUserNew.UserNews.Where(u => u.UserNewName == LoggedUsername).Select(u => u.UserNewBalance).FirstOrDefault();
-                
             } else {
                 textBoxUserNameP.Text = UserName;
             }
         }
         private void UserWalletForm_KeyDown(object sender, KeyEventArgs e) {
 
-            if (e.KeyCode == Keys.Enter) {
-
+            if (e.KeyCode == Keys.Enter && QuitButton.Visible == true) {
+                this.Close();
+            } else { 
                 var biggerCard = new BiggerCard(textBoxUserNameP.Text, float.Parse(textBoxUserBalance.Text.ToString()));
-                biggerCard.Show();
+                biggerCard.ShowDialog();
 
                 QuitButton.Visible = true;
                 ButtonPlay.Visible = false;
                 e.SuppressKeyPress = true;
+                this.Close();
             }
         }
 
 
         private void UserWalletForm_Load(object sender, EventArgs e) {
+
             ButtonPlay.Focus();
             var context = new EFDbCardPayingEntity();
             var lastRecord = context.CardPayings.OrderByDescending(x => x.CardPayingId).FirstOrDefault();
+
             if(CashoutSwitch == true) lastRecord.TimeOfPayment = DateTime.Now;
+
             var bindingList = new BindingList<CardPaying>(new[] { lastRecord });
             var source = new BindingSource(bindingList, null);
             dataGridViewUserWallet.DataSource = source;
+
             var userWalletForm = new UserWalletForm();
+
             UserName = dbUserNew.UserNews.OrderByDescending(c => c.UserNewId).Select(c => c.UserNewName).FirstOrDefault();
             IsLoggedIn();
             textBoxUserNameP.ReadOnly = true;

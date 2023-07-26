@@ -190,7 +190,7 @@ namespace WindowsFormsApp1 {
 
             var userWalletForm = new UserWalletForm();
             userWalletForm.CashoutSwitch = true;
-            userWalletForm.Show();
+            userWalletForm.ShowDialog();
             userWalletForm.QuitButton.Visible = true;
             userWalletForm.ButtonPlay.Visible = false;
             Random randomCards2 = new Random();
